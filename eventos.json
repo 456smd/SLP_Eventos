@@ -1,20 +1,20 @@
 {
   "ciudad": "San Luis Potosí",
-  "actualizado": "2026-11-22T13:45:00-06:00",
+  "actualizado": "2026-11-22T14:55:31-06:00",
   "eventos": [
     {
-      "id": "2026-11-23-festival-kuitolil-2026",
+      "id": "2026-11-23-prueba-de-actualizacion",
       "fecha": "2026-11-23",
-      "fecha_fin": "2026-11-29",
-      "hora": null,
-      "hora_fin": null,
-      "nota_horario": "del 23 al 29 nov, sin hora publicada",
-      "titulo": "Festival Kuitólil 2026",
-      "lugar": "Museo Universitario (MUNI) y Centro Cultural Universitario Bicentenario",
-      "precio": "Gratis",
+      "fecha_fin": null,
+      "hora": "07:00",
+      "hora_fin": "08:00",
+      "nota_horario": "",
+      "titulo": "PRUEBA DE ACTUALIZACION",
+      "lugar": "MORADA 280",
+      "precio": "GRATIS",
       "gratis": true,
       "categoria": "festival",
-      "url": "https://www.alcantarilla.com.mx/post/festival-kuitólil-acerca-el-teatro-la-música-y-las-artes-a-las-infancias-en-slp"
+      "url": "https://morada280.456smd.com/inicio"
     },
     {
       "id": "2026-11-23-xix-festival-internacional-letras-en-san-luis",
@@ -45,18 +45,18 @@
       "url": "https://www.rallytakesthetrain.com/christmas-events/navidad-con-ninos-san-luis-potosi"
     },
     {
-      "id": "2026-11-25-xxvii-festival-de-musica-antigua-y-barroca-los-fundadores",
-      "fecha": "2026-11-25",
-      "fecha_fin": "2026-11-28",
+      "id": "2026-11-23-festival-kuitolil-2026",
+      "fecha": "2026-11-23",
+      "fecha_fin": "2026-11-29",
       "hora": null,
       "hora_fin": null,
-      "nota_horario": "del 25 al 28 nov, en la capital el 26 y 27, sin hora publicada",
-      "titulo": "XXVII Festival de Música Antigua y Barroca “Los Fundadores”",
-      "lugar": "Templos del Centro Histórico",
-      "precio": "sin precio publicado",
-      "gratis": false,
+      "nota_horario": "del 23 al 29 nov, sin hora publicada",
+      "titulo": "Festival Kuitólil 2026",
+      "lugar": "Museo Universitario (MUNI) y Centro Cultural Universitario Bicentenario",
+      "precio": "Gratis",
+      "gratis": true,
       "categoria": "festival",
-      "url": "https://www.sanluisway.com/es/events/music"
+      "url": "https://www.alcantarilla.com.mx/post/festival-kuitólil-acerca-el-teatro-la-música-y-las-artes-a-las-infancias-en-slp"
     },
     {
       "id": "2026-11-25-busco-al-hombre-de-mi-vida-marido-ya-tuve",
@@ -71,6 +71,20 @@
       "gratis": false,
       "categoria": "teatro",
       "url": "https://planoinformativo.com/1182605/busco-al-hombre-de-mi-vida-marido-ya-tuve-llega-al-teatro-de-la-paz"
+    },
+    {
+      "id": "2026-11-25-xxvii-festival-de-musica-antigua-y-barroca-los-fundadores",
+      "fecha": "2026-11-25",
+      "fecha_fin": "2026-11-28",
+      "hora": null,
+      "hora_fin": null,
+      "nota_horario": "del 25 al 28 nov, en la capital el 26 y 27, sin hora publicada",
+      "titulo": "XXVII Festival de Música Antigua y Barroca “Los Fundadores”",
+      "lugar": "Templos del Centro Histórico",
+      "precio": "sin precio publicado",
+      "gratis": false,
+      "categoria": "festival",
+      "url": "https://www.sanluisway.com/es/events/music"
     },
     {
       "id": "2026-11-26-doyle-mexico-tour-2026",
