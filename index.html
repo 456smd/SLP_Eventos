@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" href="data:,">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Eventos en San Luis Potosí</title>
+<meta name="description" content="Agenda semanal de eventos culturales, conciertos, teatro y bazares en San Luis Potosí.">
+<style>
+  :root {
+    --fondo: #f7f3ef;
+    --tarjeta: #ffffff;
+    --texto: #2a2321;
+    --suave: #6b605b;
+    --borde: #e6ddd6;
+    --primario: #8c2f4b;     /* cantera rosa oscuro */
+    --primario-claro: #f6e4ea;
+    --acento: #d9822b;
+    --verde: #1f7a4d;
+    --verde-claro: #def3e8;
+    --radio: 14px;
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    background: var(--fondo);
+    color: var(--texto);
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.45;
+  }
+  .contenedor { max-width: 860px; margin: 0 auto; padding: 0 14px 32px; }
+
+  header.cabecera {
+    background: linear-gradient(135deg, var(--primario), #5e1d33);
+    color: #fff;
+    padding: 22px 14px 18px;
+  }
+  .cabecera .contenedor { padding-bottom: 0; }
+  .cabecera h1 { margin: 0 0 4px; font-size: clamp(1.5rem, 5vw, 2.1rem); line-height: 1.15; letter-spacing: -0.01em; }
+  .cabecera .semana { margin: 0; font-size: 1.05rem; opacity: .95; }
+  .cabecera .actualizado { margin: 6px 0 0; font-size: .85rem; opacity: .8; }
+
+  .filtros {
+    position: sticky; top: 0; z-index: 5;
+    background: rgba(247, 243, 239, .96);
+    backdrop-filter: blur(6px);
+    border-bottom: 1px solid var(--borde);
+    padding: 10px 0;
+  }
+  .fila { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+  .fila + .fila { margin-top: 8px; }
+  .segmentado { display: inline-flex; background: #fff; border: 1px solid var(--borde); border-radius: 999px; padding: 3px; }
+  .segmentado button {
+    border: 0; background: transparent; padding: 7px 14px; border-radius: 999px;
+    font: inherit; font-size: .92rem; color: var(--suave); cursor: pointer;
+  }
+  .segmentado button[aria-pressed="true"] { background: var(--primario); color: #fff; }
+  .chip {
+    border: 1px solid var(--borde); background: #fff; color: var(--texto);
+    padding: 6px 12px; border-radius: 999px; font: inherit; font-size: .88rem; cursor: pointer;
+  }
+  .chip[aria-pressed="true"] { background: var(--primario-claro); border-color: var(--primario); color: var(--primario); font-weight: 600; }
+  .chip.gratis[aria-pressed="true"] { background: var(--verde-claro); border-color: var(--verde); color: var(--verde); }
+  .chip:focus-visible, .segmentado button:focus-visible, a:focus-visible { outline: 3px solid var(--acento); outline-offset: 2px; }
+  .separador { width: 1px; height: 22px; background: var(--borde); margin: 0 2px; }
+
+  .aviso { margin: 16px 0; padding: 14px 16px; border-radius: var(--radio); background: #fff4e5; border: 1px solid #f0c98f; color: #6b4206; }
+  .aviso.error { background: #fdecec; border-color: #f2b8b8; color: #8a1f1f; }
+  .cargando { color: var(--suave); padding: 24px 0; }
+
+  section.dia { margin-top: 22px; }
+  .dia h2 {
+    margin: 0 0 10px; font-size: 1.15rem; display: flex; align-items: baseline; gap: 8px; flex-wrap: wrap;
+  }
+  .dia h2 .hoy { font-size: .72rem; text-transform: uppercase; letter-spacing: .06em; background: var(--acento); color: #fff; padding: 2px 8px; border-radius: 999px; }
+  .dia h2 .cuenta { font-size: .85rem; font-weight: 400; color: var(--suave); }
+  .dia.pasado h2 { color: var(--suave); }
+  .vacio { background: #fff; border: 1px dashed var(--borde); border-radius: var(--radio); padding: 14px 16px; color: var(--suave); font-size: .95rem; }
+
+  .tarjeta {
+    display: grid; grid-template-columns: 1fr; gap: 6px;
+    background: var(--tarjeta); border: 1px solid var(--borde); border-radius: var(--radio);
+    padding: 14px 16px; margin-bottom: 10px;
+    box-shadow: 0 1px 2px rgba(0,0,0,.04);
+  }
+  .hora { font-weight: 700; color: var(--primario); font-size: .98rem; font-variant-numeric: tabular-nums; }
+  .hora.sin { color: var(--suave); font-weight: 600; font-size: .9rem; }
+  .tarjeta h3 { margin: 0; font-size: 1.08rem; line-height: 1.3; }
+  .lugar { margin: 0; color: var(--suave); font-size: .95rem; }
+  .lugar::before { content: "📍 "; }
+  .etiquetas { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 2px; }
+  .badge { display: inline-block; font-size: .8rem; padding: 3px 9px; border-radius: 999px; background: #f1ece8; color: var(--texto); }
+  .badge.precio { background: #fdf1e3; color: #7a4510; }
+  .badge.gratis { background: var(--verde-claro); color: var(--verde); font-weight: 700; }
+  .badge.cat { background: var(--primario-claro); color: var(--primario); }
+  .badge.varios { background: #e8eefc; color: #2a4a9b; }
+  .badge.curso { background: var(--acento); color: #fff; }
+  .nota { margin: 0; font-size: .9rem; color: var(--suave); }
+  .info { justify-self: start; margin-top: 4px; font-weight: 600; color: var(--primario); text-decoration: none; font-size: .95rem; }
+  .info:hover { text-decoration: underline; }
+
+  .pie { margin-top: 28px; font-size: .8rem; color: var(--suave); text-align: center; }
+  .boton-texto { background: none; border: 0; color: var(--primario); font: inherit; text-decoration: underline; cursor: pointer; padding: 0; }
+
+  @media (min-width: 640px) {
+    .tarjeta { grid-template-columns: 120px 1fr; column-gap: 18px; }
+    .tarjeta .hora { grid-row: 1 / span 6; padding-top: 2px; }
+    .contenedor { padding-left: 20px; padding-right: 20px; }
+    header.cabecera { padding: 28px 0 22px; }
+  }
+</style>
+</head>
+<body>
+<header class="cabecera">
+  <div class="contenedor">
+    <h1>Eventos en San Luis Potosí</h1>
+    <p class="semana" id="semana">Cargando agenda…</p>
+    <p class="actualizado" id="actualizado"></p>
+  </div>
+</header>
+
+<nav class="filtros" aria-label="Filtros">
+  <div class="contenedor" style="padding-bottom:0">
+    <div class="fila">
+      <div class="segmentado" role="group" aria-label="Periodo">
+        <button type="button" data-vista="hoy" aria-pressed="false">Hoy</button>
+        <button type="button" data-vista="semana" aria-pressed="false">Esta semana</button>
+        <button type="button" data-vista="todos" aria-pressed="true">Todos</button>
+      </div>
+      <button type="button" class="chip gratis" id="btnGratis" aria-pressed="false">Solo gratis</button>
+      <button type="button" class="chip" id="btnPasados" aria-pressed="false">Ver días anteriores</button>
+    </div>
+    <div class="fila" id="categorias" role="group" aria-label="Categorías"></div>
+  </div>
+</nav>
+
+<main class="contenedor">
+  <div id="mensajes"></div>
+  <div id="agenda"><p class="cargando">Cargando eventos…</p></div>
+  <p class="pie">La página se actualiza sola cada minuto. Confirma horarios y precios en el enlace de cada evento.</p>
+</main>
+
+<script>
+(function () {
+  'use strict';
+
+  var ARCHIVO = 'eventos.json';
+  var INTERVALO_MS = 60000;
+  var DIAS = ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'];
+  var MESES = ['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre'];
+  var CATEGORIAS = [
+    { id: 'todas', nombre: 'Todas' },
+    { id: 'música', nombre: 'Música' },
+    { id: 'teatro', nombre: 'Teatro' },
+    { id: 'festival', nombre: 'Festivales' },
+    { id: 'bazar', nombre: 'Bazares' },
+    { id: 'otro', nombre: 'Otros' }
+  ];
+
+  var estado = { vista: 'todos', gratis: false, categoria: 'todas', pasados: false };
+  var ultimoTexto = null;
+  var datos = null;
+
+  // ---------- utilidades ----------
+  function el(tag, props) {
+    var nodo = document.createElement(tag);
+    if (props) {
+      Object.keys(props).forEach(function (k) {
+        if (k === 'texto') nodo.textContent = props[k];
+        else if (k === 'clase') nodo.className = props[k];
+        else nodo.setAttribute(k, props[k]);
+      });
+    }
+    for (var i = 2; i < arguments.length; i++) {
+      var hijo = arguments[i];
+      if (hijo == null || hijo === false) continue;
+      nodo.appendChild(typeof hijo === 'string' ? document.createTextNode(hijo) : hijo);
+    }
+    return nodo;
+  }
+  function texto(v) { return v == null ? '' : String(v).trim(); }
+  function esFecha(s) { return /^\d{4}-\d{2}-\d{2}$/.test(s || ''); }
+  function aFecha(iso) { var p = iso.split('-'); return new Date(+p[0], +p[1] - 1, +p[2]); }
+  function aISO(d) {
+    return d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0');
+  }
+  function sumarDias(iso, n) { var d = aFecha(iso); d.setDate(d.getDate() + n); return aISO(d); }
+  function hoyISO() { return aISO(new Date()); }
+  function lunesDe(iso) { var d = aFecha(iso); var dif = (d.getDay() + 6) % 7; d.setDate(d.getDate() - dif); return aISO(d); }
+  function nombreDia(iso) { var d = aFecha(iso); return DIAS[d.getDay()] + ' ' + d.getDate() + ' de ' + MESES[d.getMonth()]; }
+  function rango(ini, fin, conAnio) {
+    var a = aFecha(ini), b = aFecha(fin);
+    var anio = conAnio ? ' de ' + b.getFullYear() : '';
+    if (a.getMonth() === b.getMonth() && a.getFullYear() === b.getFullYear()) {
+      return 'del ' + a.getDate() + ' al ' + b.getDate() + ' de ' + MESES[b.getMonth()] + anio;
+    }
+    return 'del ' + a.getDate() + ' de ' + MESES[a.getMonth()] + ' al ' + b.getDate() + ' de ' + MESES[b.getMonth()] + anio;
+  }
+  function urlSegura(u) {
+    try { var x = new URL(u, location.href); return (x.protocol === 'https:' || x.protocol === 'http:') ? x.href : null; }
+    catch (e) { return null; }
+  }
+  function normal(s) { return texto(s).normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase(); }
+  function finDe(ev) { return ev.fecha_fin && ev.fecha_fin > ev.fecha ? ev.fecha_fin : ev.fecha; }
+
+  function limpiarEventos(lista) {
+    return (Array.isArray(lista) ? lista : []).filter(function (ev) {
+      return ev && esFecha(ev.fecha) && texto(ev.titulo);
+    }).map(function (ev) {
+      return {
+        fecha: ev.fecha,
+        fecha_fin: esFecha(ev.fecha_fin) ? ev.fecha_fin : null,
+        hora: /^\d{1,2}:\d{2}$/.test(texto(ev.hora)) ? texto(ev.hora).padStart(5, '0') : null,
+        hora_fin: /^\d{1,2}:\d{2}$/.test(texto(ev.hora_fin)) ? texto(ev.hora_fin).padStart(5, '0') : null,
+        nota_horario: texto(ev.nota_horario),
+        titulo: texto(ev.titulo),
+        lugar: texto(ev.lugar),
+        precio: texto(ev.precio),
+        gratis: ev.gratis === true,
+        categoria: CATEGORIAS.some(function (c) { return c.id === ev.categoria && c.id !== 'todas'; }) ? ev.categoria : 'otro',
+        url: texto(ev.url)
+      };
+    }).sort(function (a, b) {
+      if (a.fecha !== b.fecha) return a.fecha < b.fecha ? -1 : 1;
+      if (a.hora && b.hora) return a.hora < b.hora ? -1 : a.hora > b.hora ? 1 : 0;
+      if (a.hora) return -1;
+      if (b.hora) return 1;
+      return 0;
+    });
+  }
+
+  // ---------- carga ----------
+  function mostrarMensaje(msg, esError) {
+    var cont = document.getElementById('mensajes');
+    cont.textContent = '';
+    if (msg) cont.appendChild(el('div', { clase: 'aviso' + (esError ? ' error' : ''), role: 'alert', texto: msg }));
+  }
+
+  function cargar() {
+    return fetch(ARCHIVO + '?t=' + Date.now(), { cache: 'no-store' })
+      .then(function (r) { if (!r.ok) throw new Error('HTTP ' + r.status); return r.text(); })
+      .then(function (t) {
+        if (t === ultimoTexto) return;          // sin cambios: no re-renderizar
+        var json = JSON.parse(t);
+        ultimoTexto = t;
+        datos = { actualizado: json.actualizado, eventos: limpiarEventos(json.eventos) };
+        mostrarMensaje('');
+        render();
+      })
+      .catch(function (err) {
+        console.warn('No se pudo cargar eventos.json:', err);
+        if (!datos) {
+          document.getElementById('agenda').textContent = '';
+          document.getElementById('semana').textContent = 'Agenda no disponible';
+          mostrarMensaje('No pudimos cargar la agenda en este momento. Revisa tu conexión; la página volverá a intentarlo sola en un minuto.', true);
+        } else {
+          mostrarMensaje('No se pudo actualizar la agenda; mostramos la última versión cargada.', false);
+        }
+      });
+  }
+
+  // ---------- render ----------
+  function semanaPublicada(eventos, hoy) {
+    if (!eventos.length) return null;
+    var ref = null;
+    for (var i = 0; i < eventos.length; i++) { if (finDe(eventos[i]) >= hoy) { ref = eventos[i].fecha; break; } }
+    if (!ref) ref = eventos[eventos.length - 1].fecha;
+    if (ref < hoy) ref = hoy;
+    var ini = lunesDe(ref);
+    return { ini: ini, fin: sumarDias(ini, 6) };
+  }
+
+  function tarjeta(ev, enCurso) {
+    var horaTxt = ev.hora ? (ev.hora_fin ? ev.hora + ' – ' + ev.hora_fin : ev.hora) : 'Horario por confirmar';
+    var etiquetas = el('div', { clase: 'etiquetas' });
+    if (ev.gratis) etiquetas.appendChild(el('span', { clase: 'badge gratis', texto: 'Gratis' }));
+    if (ev.precio && !(ev.gratis && /^(gratis|entrada libre)$/i.test(ev.precio))) {
+      etiquetas.appendChild(el('span', { clase: 'badge precio', texto: ev.precio }));
+    }
+    var cat = CATEGORIAS.filter(function (c) { return c.id === ev.categoria; })[0];
+    if (cat) etiquetas.appendChild(el('span', { clase: 'badge cat', texto: cat.nombre }));
+    if (ev.fecha_fin && ev.fecha_fin > ev.fecha) {
+      etiquetas.appendChild(el('span', { clase: 'badge varios', texto: 'Varios días · ' + rango(ev.fecha, ev.fecha_fin) }));
+    }
+    if (enCurso) etiquetas.appendChild(el('span', { clase: 'badge curso', texto: 'En curso hasta el ' + aFecha(ev.fecha_fin).getDate() + ' de ' + MESES[aFecha(ev.fecha_fin).getMonth()] }));
+
+    // La nota solo se muestra si aporta algo más que la hora.
+    var nota = ev.nota_horario;
+    var trivial = !nota || nota === ev.hora || normal(nota).replace(/\s/g, '') === normal(horaTxt).replace(/\s/g, '').replace(/–/g, '-') ||
+      normal(nota).replace(/[\s–-]/g, '') === normal((ev.hora || '') + (ev.hora_fin || '')).replace(/[\s–-]/g, '');
+
+    var enlace = urlSegura(ev.url);
+    return el('article', { clase: 'tarjeta' },
+      el('div', { clase: 'hora' + (ev.hora ? '' : ' sin'), texto: horaTxt }),
+      el('h3', { texto: ev.titulo }),
+      ev.lugar ? el('p', { clase: 'lugar', texto: ev.lugar }) : null,
+      etiquetas,
+      trivial ? null : el('p', { clase: 'nota', texto: nota }),
+      enlace ? el('a', { clase: 'info', href: enlace, target: '_blank', rel: 'noopener noreferrer', texto: 'Más info ↗' }) : null
+    );
+  }
+
+  function render() {
+    if (!datos) return;
+    var hoy = hoyISO();
+    var eventos = datos.eventos;
+    var semana = semanaPublicada(eventos, hoy);
+
+    document.getElementById('semana').textContent = semana
+      ? 'Semana ' + rango(semana.ini, semana.fin, true)
+      : 'Sin eventos publicados';
+    var act = document.getElementById('actualizado');
+    var f = datos.actualizado ? new Date(datos.actualizado) : null;
+    act.textContent = f && !isNaN(f) ? 'Actualizado: ' + f.toLocaleString('es-MX', { day: 'numeric', month: 'long', year: 'numeric', hour: '2-digit', minute: '2-digit' }) : '';
+
+    var filtrosExtra = estado.gratis || estado.categoria !== 'todas';
+    var pasa = function (ev) {
+      if (estado.gratis && !ev.gratis) return false;
+      if (estado.categoria !== 'todas' && ev.categoria !== estado.categoria) return false;
+      return true;
+    };
+
+    // Agrupar por día. Eventos de varios días ya iniciados y aún vigentes se muestran en "hoy" si se ocultan días pasados.
+    var porDia = {};
+    var agregar = function (dia, ev, enCurso) { (porDia[dia] = porDia[dia] || []).push({ ev: ev, enCurso: enCurso }); };
+    eventos.forEach(function (ev) {
+      if (!pasa(ev)) return;
+      var ocultarPasado = !estado.pasados || estado.vista === 'hoy';
+      if (ev.fecha < hoy && finDe(ev) >= hoy && ocultarPasado) agregar(hoy, ev, true);
+      else agregar(ev.fecha, ev, false);
+    });
+    Object.keys(porDia).forEach(function (d) {
+      porDia[d].sort(function (a, b) {
+        var x = a.ev, y = b.ev;
+        if (x.hora && y.hora) return x.hora < y.hora ? -1 : x.hora > y.hora ? 1 : 0;
+        return x.hora ? -1 : y.hora ? 1 : 0;
+      });
+    });
+
+    // Días a mostrar
+    var dias = [];
+    if (estado.vista === 'hoy') {
+      dias = [hoy];
+    } else {
+      var ini, fin;
+      if (estado.vista === 'semana' && semana) { ini = semana.ini; fin = semana.fin; }
+      else if (eventos.length) {
+        ini = eventos[0].fecha; fin = eventos[0].fecha;
+        eventos.forEach(function (ev) { if (ev.fecha < ini) ini = ev.fecha; if (ev.fecha > fin) fin = ev.fecha; });
+        if (porDia[hoy] && hoy > fin) fin = hoy;
+        if (porDia[hoy] && hoy < ini) ini = hoy;
+      }
+      if (ini) {
+        if (!estado.pasados && ini < hoy) ini = hoy;
+        for (var d = ini, n = 0; d <= fin && n < 400; d = sumarDias(d, 1), n++) dias.push(d);
+      }
+    }
+
+    var cont = document.getElementById('agenda');
+    cont.textContent = '';
+    var total = 0;
+    dias.forEach(function (dia) {
+      var lista = porDia[dia] || [];
+      total += lista.length;
+      if (!lista.length && (filtrosExtra && estado.vista !== 'hoy')) return; // con filtros, ocultar días vacíos
+      var h2 = el('h2', null, nombreDia(dia));
+      if (dia === hoy) h2.appendChild(el('span', { clase: 'hoy', texto: 'Hoy' }));
+      if (lista.length) h2.appendChild(el('span', { clase: 'cuenta', texto: lista.length === 1 ? '1 evento' : lista.length + ' eventos' }));
+      var sec = el('section', { clase: 'dia' + (dia < hoy ? ' pasado' : ''), 'aria-label': nombreDia(dia) }, h2);
+      if (lista.length) lista.forEach(function (x) { sec.appendChild(tarjeta(x.ev, x.enCurso)); });
+      else sec.appendChild(el('p', { clase: 'vacio', texto: dia === hoy ? 'Hoy no hay eventos publicados.' : 'Sin eventos publicados para este día.' }));
+      cont.appendChild(sec);
+    });
+
+    if (!total && !(estado.vista === 'hoy' && !filtrosExtra)) {
+      var msg = filtrosExtra ? 'No hay eventos que coincidan con los filtros seleccionados.' :
+        (dias.length ? 'No hay eventos publicados en este periodo.' : 'No hay eventos próximos publicados. Activa “Ver días anteriores” para ver los pasados.');
+      var vacio = el('div', { clase: 'vacio', style: 'margin-top:18px' }, msg + ' ');
+      if (filtrosExtra) {
+        var b = el('button', { type: 'button', clase: 'boton-texto', texto: 'Quitar filtros' });
+        b.addEventListener('click', function () { estado.gratis = false; estado.categoria = 'todas'; actualizarControles(); render(); });
+        vacio.appendChild(b);
+      }
+      cont.insertBefore(vacio, cont.firstChild);
+    }
+  }
+
+  // ---------- controles ----------
+  function actualizarControles() {
+    document.querySelectorAll('[data-vista]').forEach(function (b) { b.setAttribute('aria-pressed', String(b.dataset.vista === estado.vista)); });
+    document.getElementById('btnGratis').setAttribute('aria-pressed', String(estado.gratis));
+    var bp = document.getElementById('btnPasados');
+    bp.setAttribute('aria-pressed', String(estado.pasados));
+    bp.textContent = estado.pasados ? 'Ocultar días anteriores' : 'Ver días anteriores';
+    document.querySelectorAll('[data-cat]').forEach(function (b) { b.setAttribute('aria-pressed', String(b.dataset.cat === estado.categoria)); });
+  }
+
+  var cats = document.getElementById('categorias');
+  CATEGORIAS.forEach(function (c) {
+    var b = el('button', { type: 'button', clase: 'chip', 'data-cat': c.id, 'aria-pressed': 'false', texto: c.nombre });
+    cats.appendChild(b);
+  });
+  document.addEventListener('click', function (e) {
+    var t = e.target.closest('button');
+    if (!t) return;
+    if (t.dataset.vista) estado.vista = t.dataset.vista;
+    else if (t.dataset.cat) estado.categoria = t.dataset.cat;
+    else if (t.id === 'btnGratis') estado.gratis = !estado.gratis;
+    else if (t.id === 'btnPasados') estado.pasados = !estado.pasados;
+    else return;
+    actualizarControles();
+    render();
+  });
+  actualizarControles();
+
+  cargar();
+  setInterval(cargar, INTERVALO_MS);
+  document.addEventListener('visibilitychange', function () { if (!document.hidden) cargar(); });
+  // Volver a dibujar al cambiar de día (para ocultar días pasados aunque el archivo no cambie).
+  var diaActual = hoyISO();
+  setInterval(function () { if (hoyISO() !== diaActual) { diaActual = hoyISO(); render(); } }, INTERVALO_MS);
+})();
+</script>
+</body>
+</html>

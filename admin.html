@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" href="data:,">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Editor de eventos</title>
+<style>
+  :root { --fondo:#f5f3f1; --texto:#2a2321; --suave:#6b605b; --borde:#e0d7d0; --primario:#8c2f4b; --verde:#1f7a4d; --rojo:#b42318; --radio:12px; }
+  * { box-sizing: border-box; }
+  body { margin:0; background:var(--fondo); color:var(--texto); font-family: system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif; font-size:15px; line-height:1.45; }
+  header { background:#3b1a26; color:#fff; padding:14px 18px; display:flex; flex-wrap:wrap; gap:10px; align-items:center; justify-content:space-between; }
+  header h1 { margin:0; font-size:1.3rem; }
+  header .estado { font-size:.85rem; opacity:.9; }
+  .pendiente { background:#d9822b; color:#fff; padding:2px 8px; border-radius:999px; font-weight:600; }
+  main { max-width:1200px; margin:0 auto; padding:16px; display:grid; gap:16px; grid-template-columns:1fr; }
+  @media (min-width: 980px) { main { grid-template-columns: 1fr 1fr; } .ancho { grid-column: 1 / -1; } }
+  .panel { background:#fff; border:1px solid var(--borde); border-radius:var(--radio); padding:16px; }
+  .panel h2 { margin:0 0 12px; font-size:1.08rem; }
+  .panel h3 { margin:18px 0 8px; font-size:1rem; }
+  label { display:block; font-size:.85rem; font-weight:600; margin-bottom:4px; color:#4a403c; }
+  input[type=text], input[type=url], input[type=date], input[type=time], input[type=password], select, textarea {
+    width:100%; padding:8px 10px; border:1px solid var(--borde); border-radius:8px; font:inherit; background:#fff; color:inherit; }
+  textarea { min-height:180px; font-family: ui-monospace, Menlo, Consolas, monospace; font-size:.85rem; }
+  .rejilla { display:grid; gap:10px; grid-template-columns: repeat(2, minmax(0,1fr)); }
+  .rejilla .completo { grid-column: 1 / -1; }
+  .check { display:flex; gap:8px; align-items:center; font-weight:600; font-size:.9rem; }
+  .check input { width:18px; height:18px; }
+  .botones { display:flex; flex-wrap:wrap; gap:8px; margin-top:12px; }
+  button { font:inherit; border-radius:8px; border:1px solid var(--borde); background:#fff; padding:8px 14px; cursor:pointer; }
+  button.primario { background:var(--primario); color:#fff; border-color:var(--primario); }
+  button.verde { background:var(--verde); color:#fff; border-color:var(--verde); }
+  button.peligro { color:var(--rojo); border-color:#f0c4c0; }
+  button:disabled { opacity:.5; cursor:not-allowed; }
+  button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible { outline:3px solid #d9822b; outline-offset:1px; }
+  .msg { margin-top:10px; padding:10px 12px; border-radius:8px; font-size:.9rem; display:none; white-space:pre-line; }
+  .msg.ok { display:block; background:#e3f4ea; color:#14532d; }
+  .msg.err { display:block; background:#fdecec; color:#8a1f1f; }
+  .msg.info { display:block; background:#eef2fb; color:#233a7a; }
+  .advertencia { background:#fff4e5; border:1px solid #f0c98f; color:#6b4206; border-radius:8px; padding:10px 12px; font-size:.86rem; margin-bottom:12px; }
+  .dia { margin-top:14px; }
+  .dia h3 { margin:0 0 6px; font-size:.95rem; color:var(--primario); }
+  .fila-ev { display:flex; gap:10px; align-items:flex-start; justify-content:space-between; border:1px solid var(--borde); border-radius:8px; padding:8px 10px; margin-bottom:6px; }
+  .fila-ev.pasado { opacity:.6; }
+  .fila-ev .t { font-weight:600; }
+  .fila-ev .s { font-size:.82rem; color:var(--suave); }
+  .fila-ev .acc { display:flex; gap:6px; flex-shrink:0; }
+  .fila-ev .acc button { padding:4px 10px; font-size:.82rem; }
+  table { width:100%; border-collapse:collapse; font-size:.82rem; margin-top:10px; }
+  th, td { text-align:left; border-bottom:1px solid var(--borde); padding:6px 6px; vertical-align:top; }
+  th { background:#faf7f5; position:sticky; top:0; }
+  .tabla-scroll { max-height:380px; overflow:auto; border:1px solid var(--borde); border-radius:8px; }
+  tr.dup td { color:#999; text-decoration: line-through; }
+  .ayuda { font-size:.82rem; color:var(--suave); margin:4px 0 8px; }
+  code { background:#f3eeea; padding:1px 4px; border-radius:4px; }
+  details summary { cursor:pointer; font-weight:600; }
+</style>
+</head>
+<body>
+<header>
+  <h1>Editor de eventos</h1>
+  <div class="estado"><span id="cuenta">0 eventos</span> · <span id="cambios">Sin cambios</span></div>
+</header>
+
+<main>
+  <!-- LISTA -->
+  <section class="panel">
+    <h2>Eventos</h2>
+    <div class="botones" style="margin-top:0">
+      <button type="button" id="btnRecargar">Recargar eventos.json</button>
+      <button type="button" id="btnAbrir">Abrir archivo…</button>
+      <input type="file" id="archivo" accept=".json,application/json" hidden>
+      <button type="button" class="peligro" id="btnPasados">Quitar eventos pasados</button>
+    </div>
+    <div id="msgLista" class="msg"></div>
+    <div id="lista"></div>
+  </section>
+
+  <!-- FORMULARIO -->
+  <section class="panel">
+    <h2 id="tituloForm">Agregar evento</h2>
+    <form id="form" autocomplete="off">
+      <input type="hidden" id="f_id">
+      <div class="rejilla">
+        <div class="completo"><label for="f_titulo">Título *</label><input type="text" id="f_titulo" required></div>
+        <div class="completo"><label for="f_lugar">Lugar</label><input type="text" id="f_lugar"></div>
+        <div><label for="f_fecha">Fecha *</label><input type="date" id="f_fecha" required></div>
+        <div><label for="f_fecha_fin">Fecha final (si dura varios días)</label><input type="date" id="f_fecha_fin"></div>
+        <div><label for="f_hora">Hora de inicio</label><input type="time" id="f_hora"></div>
+        <div><label for="f_hora_fin">Hora de fin</label><input type="time" id="f_hora_fin"></div>
+        <div class="completo"><label for="f_nota">Nota de horario</label><input type="text" id="f_nota" placeholder="p. ej. inauguración 19:00, del 23 al 27 nov · sin hora publicada"></div>
+        <div><label for="f_precio">Precio</label><input type="text" id="f_precio" placeholder="$500–$700 · sin precio publicado"></div>
+        <div><label for="f_categoria">Categoría</label>
+          <select id="f_categoria">
+            <option value="música">Música</option><option value="teatro">Teatro</option><option value="festival">Festival</option>
+            <option value="bazar">Bazar</option><option value="otro">Otro</option>
+          </select></div>
+        <div class="completo check"><input type="checkbox" id="f_gratis"><label for="f_gratis" style="margin:0">Entrada gratuita</label></div>
+        <div class="completo"><label for="f_url">Enlace “Más info”</label><input type="url" id="f_url" placeholder="https://…"></div>
+      </div>
+      <div class="botones">
+        <button type="submit" class="primario" id="btnGuardar">Agregar evento</button>
+        <button type="button" id="btnCancelar" hidden>Cancelar edición</button>
+      </div>
+      <div id="msgForm" class="msg"></div>
+    </form>
+  </section>
+
+  <!-- PEGAR TEXTO -->
+  <section class="panel ancho">
+    <h2>Pegar texto</h2>
+    <p class="ayuda">Pega la lista con el formato de siempre: encabezados como <code>**Lunes 23 de noviembre 2026**</code> o <code>**Jueves 26**</code> y renglones
+      <code>- Título - Lugar - Precio - Horario - [info](https://…)</code>. Los renglones “Nada en la app.” se ignoran. Revisa la vista previa antes de agregar.</p>
+    <textarea id="pegado" placeholder="**Lunes 23 de noviembre 2026**&#10;- Título - Lugar - Gratis - 19:00 - [info](https://…)"></textarea>
+    <div class="botones">
+      <button type="button" class="primario" id="btnAnalizar">Ver vista previa</button>
+      <button type="button" class="verde" id="btnFusionar" disabled>Agregar a la lista</button>
+      <button type="button" id="btnLimpiarPegado">Limpiar</button>
+    </div>
+    <div id="msgPegado" class="msg"></div>
+    <div id="preview"></div>
+  </section>
+
+  <!-- GUARDAR / PUBLICAR -->
+  <section class="panel ancho">
+    <h2>Guardar y publicar</h2>
+    <div class="botones" style="margin-top:0">
+      <button type="button" id="btnDescargar">Descargar eventos.json</button>
+      <button type="button" class="verde" id="btnPublicar">Publicar en GitHub</button>
+      <button type="button" id="btnCargarGH">Cargar desde GitHub</button>
+    </div>
+    <div id="msgPublicar" class="msg"></div>
+
+    <details id="ajustes" style="margin-top:16px">
+      <summary>Ajustes de GitHub</summary>
+      <div style="margin-top:12px">
+        <div class="advertencia">
+          <strong>Importante:</strong> el token es como una contraseña. Usa un token <em>fine-grained</em> limitado solo a este repositorio,
+          con permiso <em>Contents: Read and write</em> y fecha de vencimiento. Se guarda únicamente en el navegador de este dispositivo
+          (no se sube a GitHub ni va dentro de este archivo). No lo guardes en computadoras compartidas y bórralo si ya no lo usas.
+        </div>
+        <div class="rejilla">
+          <div><label for="g_owner">Usuario u organización</label><input type="text" id="g_owner" placeholder="tuusuario"></div>
+          <div><label for="g_repo">Repositorio</label><input type="text" id="g_repo" placeholder="agenda-eventos-slp"></div>
+          <div><label for="g_branch">Rama</label><input type="text" id="g_branch" value="main"></div>
+          <div><label for="g_path">Archivo</label><input type="text" id="g_path" value="eventos.json"></div>
+          <div class="completo"><label for="g_token">Token (fine-grained)</label><input type="password" id="g_token" placeholder="github_pat_…" autocomplete="off"></div>
+          <div class="completo check"><input type="checkbox" id="g_recordar" checked><label for="g_recordar" style="margin:0">Recordar el token en este dispositivo</label></div>
+        </div>
+        <div class="botones">
+          <button type="button" class="primario" id="btnGuardarAjustes">Guardar ajustes</button>
+          <button type="button" class="peligro" id="btnBorrarToken">Borrar token</button>
+        </div>
+        <div id="msgAjustes" class="msg"></div>
+      </div>
+    </details>
+  </section>
+</main>
+
+<script>
+(function () {
+  'use strict';
+
+  // ===================== utilidades =====================
+  var DIAS = ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'];
+  var MESES_N = ['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'];
+  var MESES = { enero:1, febrero:2, marzo:3, abril:4, mayo:5, junio:6, julio:7, agosto:8, septiembre:9, setiembre:9, octubre:10, noviembre:11, diciembre:12,
+    ene:1, feb:2, mar:3, abr:4, may:5, jun:6, jul:7, ago:8, sep:9, sept:9, set:9, oct:10, nov:11, dic:12 };
+  var CATS = ['música', 'teatro', 'festival', 'bazar', 'otro'];
+  var CLAVE_AJUSTES = 'agendaSLP.github';
+
+  function $(id) { return document.getElementById(id); }
+  function el(tag, props) {
+    var n = document.createElement(tag);
+    if (props) Object.keys(props).forEach(function (k) {
+      if (k === 'texto') n.textContent = props[k]; else if (k === 'clase') n.className = props[k]; else n.setAttribute(k, props[k]);
+    });
+    for (var i = 2; i < arguments.length; i++) { var h = arguments[i]; if (h == null || h === false) continue; n.appendChild(typeof h === 'string' ? document.createTextNode(h) : h); }
+    return n;
+  }
+  function txt(v) { return v == null ? '' : String(v).trim(); }
+  function normal(s) { return txt(s).normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase(); }
+  function pad(n) { return String(n).padStart(2, '0'); }
+  function iso(y, m, d) { return y + '-' + pad(m) + '-' + pad(d); }
+  function aFecha(s) { var p = s.split('-'); return new Date(+p[0], +p[1] - 1, +p[2]); }
+  function hoyISO() { var d = new Date(); return iso(d.getFullYear(), d.getMonth() + 1, d.getDate()); }
+  function nombreDia(s) { var d = aFecha(s); return DIAS[d.getDay()] + ' ' + d.getDate() + ' de ' + MESES_N[d.getMonth()] + ' ' + d.getFullYear(); }
+  function slug(s) { return normal(s).replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '').slice(0, 60); }
+  function claveDup(ev) { return ev.fecha + '|' + normal(ev.titulo).replace(/[^a-z0-9]+/g, ' ').trim(); }
+  function msg(id, texto, tipo) { var m = $(id); m.textContent = texto || ''; m.className = 'msg' + (texto ? ' ' + (tipo || 'info') : ''); }
+  function finDe(ev) { return ev.fecha_fin && ev.fecha_fin > ev.fecha ? ev.fecha_fin : ev.fecha; }
+  function ahoraISO() {
+    var d = new Date(), off = -d.getTimezoneOffset(), s = off >= 0 ? '+' : '-';
+    off = Math.abs(off);
+    return iso(d.getFullYear(), d.getMonth() + 1, d.getDate()) + 'T' + pad(d.getHours()) + ':' + pad(d.getMinutes()) + ':' + pad(d.getSeconds()) + s + pad(Math.floor(off / 60)) + ':' + pad(off % 60);
+  }
+  function ordenar(lista) {
+    return lista.sort(function (a, b) {
+      if (a.fecha !== b.fecha) return a.fecha < b.fecha ? -1 : 1;
+      if (a.hora && b.hora) return a.hora < b.hora ? -1 : a.hora > b.hora ? 1 : 0;
+      return a.hora ? -1 : b.hora ? 1 : 0;
+    });
+  }
+  function idUnico(ev, lista) {
+    var base = ev.fecha + '-' + (slug(ev.titulo) || 'evento'), id = base, n = 2;
+    var usados = {}; lista.forEach(function (e) { if (e !== ev) usados[e.id] = true; });
+    while (usados[id]) id = base + '-' + n++;
+    return id;
+  }
+
+  // ===================== parser del texto pegado =====================
+  function adivinarCategoria(titulo, lugar) {
+    var t = normal(titulo), l = normal(lugar);
+    if (/festival/.test(t)) return 'festival';
+    if (/bazar|mercadito|mercado|feria|expo/.test(t)) return 'bazar';
+    if (/ballet|opera|obra|monologo|stand ?up|comedia|danza|teatro/.test(t)) return 'teatro';
+    if (/concierto|tour|tributo|musica|rondalla|palenque|homenaje|banda|orquesta|sinfonica|recital|dj\b|rock|jazz/.test(t)) return 'música';
+    if (/teatro/.test(l)) return 'teatro';
+    return 'otro';
+  }
+
+  function parsearTexto(texto, ref) {
+    ref = ref || new Date();
+    var anio = ref.getFullYear(), mes = ref.getMonth() + 1, dia = null, fecha = null;
+    var eventos = [], avisos = [];
+    var lineas = String(texto || '').split(/\r?\n/);
+    var reDia = /^(lunes|martes|miercoles|jueves|viernes|sabado|domingo)\b[\s,]*(\d{1,2})\b(.*)$/;
+
+    lineas.forEach(function (bruta, i) {
+      var linea = bruta.trim();
+      if (!linea) return;
+      var esVineta = /^([-•–]|\*(?!\*))\s+/.test(linea);
+
+      if (!esVineta) {
+        // Encabezado de día: tolera asteriscos desbalanceados, #, _ y dos puntos.
+        var limpio = normal(linea.replace(/^[\s*#_]+|[\s*#_:]+$/g, ''));
+        var m = limpio.match(reDia);
+        if (m) {
+          var d = +m[2], resto = m[3] || '', nuevoMes = null, nuevoAnio = null;
+          resto.split(/[^a-z0-9]+/).forEach(function (w) {
+            if (!w) return;
+            if (MESES[w] && nuevoMes == null) nuevoMes = MESES[w];
+            else if (/^20\d\d$/.test(w)) nuevoAnio = +w;
+          });
+          if (nuevoAnio) anio = nuevoAnio;
+          if (nuevoMes) mes = nuevoMes;
+          else if (dia != null && d < dia) { mes++; if (mes > 12) { mes = 1; anio++; } } // cambio de mes sin decirlo
+          dia = d;
+          fecha = iso(anio, mes, d);
+          var comprobar = aFecha(fecha);
+          if (comprobar.getDate() !== d) avisos.push('Renglón ' + (i + 1) + ': fecha inválida "' + linea + '".');
+          else {
+            var diaSemana = normal(DIAS[comprobar.getDay()]);
+            if (diaSemana !== m[1]) avisos.push('Renglón ' + (i + 1) + ': el ' + d + '/' + mes + '/' + anio + ' es ' + DIAS[comprobar.getDay()] + ', no ' + m[1] + '. Revisa la fecha.');
+          }
+          return;
+        }
+        avisos.push('Renglón ' + (i + 1) + ' ignorado (no es día ni evento): "' + linea.slice(0, 60) + '"');
+        return;
+      }
+
+      var c = linea.replace(/^([-•–]|\*)\s+/, '').trim();
+      if (/^(nada|sin eventos|no hay)\b/.test(normal(c))) return;
+      if (!fecha) { avisos.push('Renglón ' + (i + 1) + ': evento sin día arriba; se omitió.'); return; }
+
+      var url = '';
+      var mLink = c.match(/\[([^\]]*)\]\(\s*(\S+?)\s*\)\s*$/);
+      if (mLink) { url = mLink[2]; c = c.slice(0, mLink.index); }
+      else { var mUrl = c.match(/(https?:\/\/\S+)\s*$/); if (mUrl) { url = mUrl[1]; c = c.slice(0, mUrl.index); } }
+      c = c.replace(/[\s\-–—]+$/, '').trim();
+
+      var partes = c.split(/\s+-\s+/).map(function (p) { return p.trim(); });
+      var titulo = partes[0] || '', lugar = partes[1] || '', precio = partes[2] || '', horario = partes.slice(3).join(' - ');
+      if (partes.length < 4) avisos.push('Renglón ' + (i + 1) + ': faltan partes (título - lugar - precio - horario). Revísalo.');
+
+      var nh = normal(horario);
+      var horas = [], reH = /\b(\d{1,2}):(\d{2})\b/g, mh;
+      while ((mh = reH.exec(horario))) horas.push(pad(+mh[1]) + ':' + mh[2]);
+      var hora = horas[0] || null, hora_fin = null;
+      var mRango = horario.match(/\b(\d{1,2}:\d{2})\s*(?:[–—-]|a)\s*(\d{1,2}):(\d{2})\b/);
+      if (mRango) hora_fin = pad(+mRango[2]) + ':' + mRango[3];
+
+      var fecha_fin = null;
+      var mDel = nh.match(/\bdel\s+(\d{1,2})(?:\s+(?:de\s+)?([a-z]+))?\s+al\s+(\d{1,2})(?:\s+(?:de\s+)?([a-z]+))?/);
+      var mHasta = !mDel && nh.match(/\bhasta\s+el\s+(\d{1,2})(?:\s+(?:de\s+)?([a-z]+))?/);
+      if (mDel || mHasta) {
+        var dFin = +(mDel ? mDel[3] : mHasta[1]);
+        var mesTxt = mDel ? (mDel[4] || mDel[2]) : mHasta[2];
+        var p = fecha.split('-'), y = +p[0], mIni = +p[1];
+        var mFin = (mesTxt && MESES[mesTxt]) || mIni;
+        if (!(mesTxt && MESES[mesTxt]) && dFin < +p[2]) mFin = mIni + 1;
+        if (mFin > 12) { mFin -= 12; y++; }
+        if (mFin < mIni) y++;
+        var ff = iso(y, mFin, dFin);
+        if (ff > fecha) fecha_fin = ff;
+      }
+
+      var gratis = /\b(gratis|entrada libre|gratuit[oa]|sin costo|free)\b/.test(normal(precio));
+      eventos.push({
+        id: '', fecha: fecha, fecha_fin: fecha_fin, hora: hora, hora_fin: hora_fin,
+        nota_horario: horario || 'sin hora publicada', titulo: titulo, lugar: lugar, precio: precio,
+        gratis: gratis, categoria: adivinarCategoria(titulo, lugar), url: url
+      });
+    });
+    return { eventos: eventos, avisos: avisos };
+  }
+  window.parsearTexto = parsearTexto; // expuesto para pruebas
+
+  // ===================== estado =====================
+  var datos = { ciudad: 'San Luis Potosí', actualizado: null, eventos: [] };
+  var sucio = false;
+  var pendientes = []; // vista previa
+
+  function marcar(s) {
+    sucio = s;
+    $('cambios').textContent = '';
+    if (s) $('cambios').appendChild(el('span', { clase: 'pendiente', texto: 'Cambios sin publicar' }));
+    else $('cambios').textContent = 'Sin cambios';
+  }
+  window.addEventListener('beforeunload', function (e) { if (sucio) { e.preventDefault(); e.returnValue = ''; } });
+
+  function normalizarEvento(ev) {
+    var hora = /^\d{1,2}:\d{2}$/.test(txt(ev.hora)) ? txt(ev.hora).padStart(5, '0') : null;
+    var hf = /^\d{1,2}:\d{2}$/.test(txt(ev.hora_fin)) ? txt(ev.hora_fin).padStart(5, '0') : null;
+    return {
+      id: txt(ev.id), fecha: txt(ev.fecha), fecha_fin: /^\d{4}-\d{2}-\d{2}$/.test(txt(ev.fecha_fin)) && txt(ev.fecha_fin) > txt(ev.fecha) ? txt(ev.fecha_fin) : null,
+      hora: hora, hora_fin: hf, nota_horario: txt(ev.nota_horario), titulo: txt(ev.titulo), lugar: txt(ev.lugar),
+      precio: txt(ev.precio), gratis: ev.gratis === true, categoria: CATS.indexOf(ev.categoria) >= 0 ? ev.categoria : 'otro', url: txt(ev.url)
+    };
+  }
+
+  function usarDatos(json, origen) {
+    if (!json || !Array.isArray(json.eventos)) throw new Error('El archivo no tiene la lista "eventos".');
+    var lista = json.eventos.map(normalizarEvento).filter(function (e) { return /^\d{4}-\d{2}-\d{2}$/.test(e.fecha) && e.titulo; });
+    lista.forEach(function (e) { if (!e.id) e.id = idUnico(e, lista); });
+    datos = { ciudad: json.ciudad || 'San Luis Potosí', actualizado: json.actualizado || null, eventos: ordenar(lista) };
+    marcar(false);
+    pintarLista();
+    msg('msgLista', 'Cargados ' + lista.length + ' eventos desde ' + origen + '.', 'ok');
+  }
+
+  function cargarLocal() {
+    return fetch('eventos.json?t=' + Date.now(), { cache: 'no-store' })
+      .then(function (r) { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); })
+      .then(function (j) { usarDatos(j, 'eventos.json'); })
+      .catch(function (e) {
+        msg('msgLista', 'No se pudo leer eventos.json (' + e.message + '). Si abriste este archivo directo desde tu computadora, usa “Abrir archivo…” o “Cargar desde GitHub”.', 'err');
+        pintarLista();
+      });
+  }
+
+  // ===================== lista =====================
+  function pintarLista() {
+    var cont = $('lista'); cont.textContent = '';
+    var hoy = hoyISO();
+    $('cuenta').textContent = datos.eventos.length + (datos.eventos.length === 1 ? ' evento' : ' eventos');
+    if (!datos.eventos.length) { cont.appendChild(el('p', { clase: 'ayuda', texto: 'Todavía no hay eventos. Agrega uno con el formulario o pega tu lista.' })); return; }
+    var actual = null, bloque = null;
+    datos.eventos.forEach(function (ev) {
+      if (ev.fecha !== actual) {
+        actual = ev.fecha;
+        bloque = el('div', { clase: 'dia' }, el('h3', { texto: nombreDia(ev.fecha) + (ev.fecha === hoy ? ' · hoy' : '') }));
+        cont.appendChild(bloque);
+      }
+      var sub = [ev.hora ? ev.hora + (ev.hora_fin ? '–' + ev.hora_fin : '') : 'sin hora', ev.lugar, ev.gratis ? 'Gratis' : ev.precio, ev.categoria]
+        .filter(Boolean).join(' · ');
+      if (ev.fecha_fin) sub += ' · hasta ' + ev.fecha_fin;
+      var bEd = el('button', { type: 'button', texto: 'Editar' });
+      var bBo = el('button', { type: 'button', clase: 'peligro', texto: 'Borrar' });
+      bEd.addEventListener('click', function () { editar(ev.id); });
+      bBo.addEventListener('click', function () { borrar(ev.id); });
+      bloque.appendChild(el('div', { clase: 'fila-ev' + (finDe(ev) < hoy ? ' pasado' : '') },
+        el('div', null, el('div', { clase: 't', texto: ev.titulo }), el('div', { clase: 's', texto: sub })),
+        el('div', { clase: 'acc' }, bEd, bBo)));
+    });
+  }
+
+  function borrar(id) {
+    var ev = datos.eventos.filter(function (e) { return e.id === id; })[0];
+    if (!ev || !confirm('¿Borrar "' + ev.titulo + '"?')) return;
+    datos.eventos = datos.eventos.filter(function (e) { return e.id !== id; });
+    if ($('f_id').value === id) limpiarForm();
+    marcar(true); pintarLista();
+    msg('msgLista', 'Evento borrado. Recuerda publicar o descargar.', 'info');
+  }
+
+  $('btnPasados').addEventListener('click', function () {
+    var hoy = hoyISO();
+    var pasados = datos.eventos.filter(function (e) { return finDe(e) < hoy; });
+    if (!pasados.length) { msg('msgLista', 'No hay eventos pasados.', 'info'); return; }
+    if (!confirm('¿Quitar ' + pasados.length + ' evento(s) que ya terminaron (antes de hoy)?')) return;
+    datos.eventos = datos.eventos.filter(function (e) { return finDe(e) >= hoy; });
+    marcar(true); pintarLista();
+    msg('msgLista', 'Se quitaron ' + pasados.length + ' eventos pasados.', 'ok');
+  });
+  $('btnRecargar').addEventListener('click', function () {
+    if (sucio && !confirm('Tienes cambios sin publicar. ¿Descartarlos y recargar?')) return;
+    cargarLocal();
+  });
+  $('btnAbrir').addEventListener('click', function () { $('archivo').click(); });
+  $('archivo').addEventListener('change', function () {
+    var f = this.files[0]; if (!f) return;
+    f.text().then(function (t) { usarDatos(JSON.parse(t), f.name); })
+      .catch(function (e) { msg('msgLista', 'No se pudo leer el archivo: ' + e.message, 'err'); });
+    this.value = '';
+  });
+
+  // ===================== formulario =====================
+  var campos = ['titulo', 'lugar', 'fecha', 'fecha_fin', 'hora', 'hora_fin', 'precio', 'categoria', 'url'];
+  function limpiarForm() {
+    $('form').reset(); $('f_id').value = '';
+    $('tituloForm').textContent = 'Agregar evento';
+    $('btnGuardar').textContent = 'Agregar evento';
+    $('btnCancelar').hidden = true;
+  }
+  function editar(id) {
+    var ev = datos.eventos.filter(function (e) { return e.id === id; })[0]; if (!ev) return;
+    $('f_id').value = ev.id;
+    campos.forEach(function (c) { $('f_' + c).value = ev[c] || ''; });
+    $('f_nota').value = ev.nota_horario || '';
+    $('f_gratis').checked = !!ev.gratis;
+    $('tituloForm').textContent = 'Editar evento';
+    $('btnGuardar').textContent = 'Guardar cambios';
+    $('btnCancelar').hidden = false;
+    msg('msgForm', '');
+    $('form').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    $('f_titulo').focus();
+  }
+  $('btnCancelar').addEventListener('click', limpiarForm);
+  $('form').addEventListener('submit', function (e) {
+    e.preventDefault();
+    var ev = { id: $('f_id').value };
+    campos.forEach(function (c) { ev[c] = $('f_' + c).value; });
+    ev.nota_horario = $('f_nota').value; ev.gratis = $('f_gratis').checked;
+    ev = normalizarEvento(ev);
+    if (!ev.titulo || !ev.fecha) { msg('msgForm', 'Título y fecha son obligatorios.', 'err'); return; }
+    if (ev.url && !/^https?:\/\//i.test(ev.url)) { msg('msgForm', 'El enlace debe empezar con https://', 'err'); return; }
+    if (!ev.nota_horario && !ev.hora) ev.nota_horario = 'sin hora publicada';
+    if (ev.id) {
+      datos.eventos = datos.eventos.map(function (x) { return x.id === ev.id ? ev : x; });
+      msg('msgForm', 'Cambios guardados en la lista. Falta publicar.', 'ok');
+    } else {
+      var dup = datos.eventos.some(function (x) { return claveDup(x) === claveDup(ev); });
+      if (dup && !confirm('Ya existe un evento con ese título en esa fecha. ¿Agregarlo de todos modos?')) return;
+      ev.id = idUnico(ev, datos.eventos.concat([ev]));
+      datos.eventos.push(ev);
+      msg('msgForm', 'Evento agregado a la lista. Falta publicar.', 'ok');
+    }
+    ordenar(datos.eventos); marcar(true); pintarLista(); limpiarForm();
+  });
+
+  // ===================== pegar texto =====================
+  $('btnAnalizar').addEventListener('click', function () {
+    var r = parsearTexto($('pegado').value);
+    var existentes = {}; datos.eventos.forEach(function (e) { existentes[claveDup(e)] = true; });
+    var vistos = {};
+    pendientes = r.eventos.map(function (ev) {
+      var k = claveDup(ev), dup = existentes[k] || vistos[k]; vistos[k] = true;
+      return { ev: ev, dup: !!dup };
+    });
+    var nuevos = pendientes.filter(function (p) { return !p.dup; }).length;
+    var cont = $('preview'); cont.textContent = '';
+    if (!pendientes.length) {
+      msg('msgPegado', 'No encontré eventos en el texto.' + (r.avisos.length ? '\n' + r.avisos.join('\n') : ''), 'err');
+      $('btnFusionar').disabled = true; return;
+    }
+    var tabla = el('table', null, el('thead', null, el('tr', null,
+      el('th', { texto: 'Fecha' }), el('th', { texto: 'Hora' }), el('th', { texto: 'Título' }), el('th', { texto: 'Lugar' }),
+      el('th', { texto: 'Precio' }), el('th', { texto: 'Gratis' }), el('th', { texto: 'Categoría' }), el('th', { texto: 'Hasta' }), el('th', { texto: 'Nota' }))));
+    var tb = el('tbody');
+    pendientes.forEach(function (p) {
+      var ev = p.ev;
+      tb.appendChild(el('tr', { clase: p.dup ? 'dup' : '' },
+        el('td', { texto: ev.fecha }), el('td', { texto: ev.hora ? ev.hora + (ev.hora_fin ? '–' + ev.hora_fin : '') : '—' }),
+        el('td', { texto: ev.titulo + (p.dup ? ' (ya existe)' : '') }), el('td', { texto: ev.lugar }), el('td', { texto: ev.precio }),
+        el('td', { texto: ev.gratis ? 'Sí' : 'No' }), el('td', { texto: ev.categoria }), el('td', { texto: ev.fecha_fin || '' }),
+        el('td', { texto: ev.nota_horario })));
+    });
+    tabla.appendChild(tb);
+    cont.appendChild(el('div', { clase: 'tabla-scroll' }, tabla));
+    msg('msgPegado', 'Encontré ' + pendientes.length + ' eventos: ' + nuevos + ' nuevos, ' + (pendientes.length - nuevos) + ' repetidos (se omitirán).' +
+      (r.avisos.length ? '\n\nAvisos:\n' + r.avisos.join('\n') : ''), r.avisos.length ? 'info' : 'ok');
+    $('btnFusionar').disabled = nuevos === 0;
+  });
+  $('btnFusionar').addEventListener('click', function () {
+    var n = 0;
+    pendientes.forEach(function (p) {
+      if (p.dup) return;
+      p.ev.id = idUnico(p.ev, datos.eventos.concat([p.ev]));
+      datos.eventos.push(p.ev); n++;
+    });
+    ordenar(datos.eventos); marcar(true); pintarLista();
+    pendientes = []; $('preview').textContent = ''; $('btnFusionar').disabled = true;
+    msg('msgPegado', 'Se agregaron ' + n + ' eventos a la lista. Ahora publica o descarga.', 'ok');
+  });
+  $('btnLimpiarPegado').addEventListener('click', function () {
+    $('pegado').value = ''; pendientes = []; $('preview').textContent = ''; $('btnFusionar').disabled = true; msg('msgPegado', '');
+  });
+
+  // ===================== guardar / publicar =====================
+  function jsonFinal() {
+    datos.actualizado = ahoraISO();
+    var limpio = { ciudad: datos.ciudad, actualizado: datos.actualizado, eventos: ordenar(datos.eventos.slice()) };
+    return JSON.stringify(limpio, null, 2) + '\n';
+  }
+  $('btnDescargar').addEventListener('click', function () {
+    var blob = new Blob([jsonFinal()], { type: 'application/json' });
+    var a = el('a', { href: URL.createObjectURL(blob), download: 'eventos.json' });
+    document.body.appendChild(a); a.click(); a.remove();
+    setTimeout(function () { URL.revokeObjectURL(a.href); }, 2000);
+    marcar(false);
+    msg('msgPublicar', 'Descargado. Súbelo a tu repositorio reemplazando el eventos.json anterior (Add file › Upload files).', 'ok');
+  });
+
+  function b64utf8(s) {
+    var bytes = new TextEncoder().encode(s), bin = '';
+    for (var i = 0; i < bytes.length; i += 0x8000) bin += String.fromCharCode.apply(null, bytes.subarray(i, i + 0x8000));
+    return btoa(bin);
+  }
+  function deB64utf8(b) {
+    var bin = atob(b.replace(/\s/g, '')), bytes = new Uint8Array(bin.length);
+    for (var i = 0; i < bin.length; i++) bytes[i] = bin.charCodeAt(i);
+    return new TextDecoder().decode(bytes);
+  }
+
+  // Ajustes: token solo en memoria o en localStorage de este dispositivo
+  var tokenMemoria = '';
+  function leerAjustes() {
+    try { return JSON.parse(localStorage.getItem(CLAVE_AJUSTES) || '{}'); } catch (e) { return {}; }
+  }
+  function ajustes() {
+    return {
+      owner: txt($('g_owner').value), repo: txt($('g_repo').value), branch: txt($('g_branch').value) || 'main',
+      path: txt($('g_path').value).replace(/^\/+/, '') || 'eventos.json', token: txt($('g_token').value) || tokenMemoria
+    };
+  }
+  (function iniciarAjustes() {
+    var a = leerAjustes();
+    if (a.owner) $('g_owner').value = a.owner;
+    if (a.repo) $('g_repo').value = a.repo;
+    if (a.branch) $('g_branch').value = a.branch;
+    if (a.path) $('g_path').value = a.path;
+    if (a.token) $('g_token').value = a.token;
+    if (!a.owner || !a.repo) $('ajustes').open = true;
+  })();
+  $('btnGuardarAjustes').addEventListener('click', function () {
+    var a = ajustes();
+    var guardar = { owner: a.owner, repo: a.repo, branch: a.branch, path: a.path };
+    if ($('g_recordar').checked) guardar.token = a.token; else tokenMemoria = a.token;
+    localStorage.setItem(CLAVE_AJUSTES, JSON.stringify(guardar));
+    msg('msgAjustes', $('g_recordar').checked ? 'Ajustes guardados en este navegador.' : 'Ajustes guardados; el token solo se usará mientras esta pestaña siga abierta.', 'ok');
+  });
+  $('btnBorrarToken').addEventListener('click', function () {
+    var a = leerAjustes(); delete a.token;
+    localStorage.setItem(CLAVE_AJUSTES, JSON.stringify(a));
+    $('g_token').value = ''; tokenMemoria = '';
+    msg('msgAjustes', 'Token borrado de este dispositivo.', 'ok');
+  });
+
+  function api(a, metodo, cuerpo) {
+    var url = 'https://api.github.com/repos/' + encodeURIComponent(a.owner) + '/' + encodeURIComponent(a.repo) + '/contents/' +
+      a.path.split('/').map(encodeURIComponent).join('/') + (metodo === 'GET' ? '?ref=' + encodeURIComponent(a.branch) + '&t=' + Date.now() : '');
+    return fetch(url, {
+      method: metodo, cache: 'no-store',
+      headers: { 'Accept': 'application/vnd.github+json', 'Authorization': 'Bearer ' + a.token, 'X-GitHub-Api-Version': '2022-11-28',
+        'Content-Type': 'application/json' },
+      body: cuerpo ? JSON.stringify(cuerpo) : undefined
+    });
+  }
+  function errorGH(r) {
+    return r.json().catch(function () { return {}; }).then(function (j) {
+      var base = j.message || ('HTTP ' + r.status);
+      if (r.status === 401) return 'Token inválido o vencido (' + base + ').';
+      if (r.status === 403) return 'El token no tiene permiso de escritura en ese repositorio (' + base + ').';
+      if (r.status === 404) return 'No encontré el repositorio, la rama o el archivo. Revisa usuario, repositorio y rama (' + base + ').';
+      if (r.status === 409) return 'Conflicto: el archivo cambió mientras publicabas. Intenta de nuevo (' + base + ').';
+      return base;
+    });
+  }
+  function validar(a) {
+    if (!a.owner || !a.repo || !a.token) { $('ajustes').open = true; msg('msgPublicar', 'Completa usuario, repositorio y token en “Ajustes de GitHub”.', 'err'); return false; }
+    return true;
+  }
+
+  $('btnPublicar').addEventListener('click', function () {
+    var a = ajustes(); if (!validar(a)) return;
+    if (!datos.eventos.length && !confirm('La lista está vacía. ¿Publicar una agenda sin eventos?')) return;
+    var boton = this; boton.disabled = true;
+    msg('msgPublicar', 'Publicando…', 'info');
+    api(a, 'GET').then(function (r) {
+      if (r.status === 404) return null; // el archivo aún no existe: se creará
+      if (!r.ok) return errorGH(r).then(function (m) { throw new Error(m); });
+      return r.json().then(function (j) { return j.sha; });
+    }).then(function (sha) {
+      var cuerpo = { message: 'Actualizar eventos', content: b64utf8(jsonFinal()), branch: a.branch };
+      if (sha) cuerpo.sha = sha;
+      return api(a, 'PUT', cuerpo);
+    }).then(function (r) {
+      if (!r.ok) return errorGH(r).then(function (m) { throw new Error(m); });
+      marcar(false);
+      var pagina = 'https://' + a.owner.toLowerCase() + '.github.io/' + a.repo + '/';
+      msg('msgPublicar', '¡Publicado! En 1 o 2 minutos se verá en ' + pagina + ' (la página abierta se actualiza sola cada minuto).', 'ok');
+    }).catch(function (e) {
+      msg('msgPublicar', 'No se pudo publicar: ' + e.message, 'err');
+    }).then(function () { boton.disabled = false; });
+  });
+
+  $('btnCargarGH').addEventListener('click', function () {
+    var a = ajustes(); if (!validar(a)) return;
+    if (sucio && !confirm('Tienes cambios sin publicar. ¿Descartarlos y cargar desde GitHub?')) return;
+    msg('msgPublicar', 'Cargando desde GitHub…', 'info');
+    api(a, 'GET').then(function (r) {
+      if (!r.ok) return errorGH(r).then(function (m) { throw new Error(m); });
+      return r.json();
+    }).then(function (j) {
+      usarDatos(JSON.parse(deB64utf8(j.content)), 'GitHub');
+      msg('msgPublicar', 'Lista cargada desde GitHub.', 'ok');
+    }).catch(function (e) { msg('msgPublicar', 'No se pudo cargar desde GitHub: ' + e.message, 'err'); });
+  });
+
+  cargarLocal();
+})();
+</script>
+</body>
+</html>
