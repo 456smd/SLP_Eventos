@@ -63,6 +63,12 @@
   }
   .chip[aria-pressed="true"] { background: var(--primario-claro); border-color: var(--primario); color: var(--primario); font-weight: 600; }
   .chip.gratis[aria-pressed="true"] { background: var(--verde-claro); border-color: var(--verde); color: var(--verde); }
+  .etiqueta { font-weight: 600; color: var(--suave); font-size: .95rem; }
+  .selector {
+    border: 1px solid var(--borde); background: #fff; color: var(--texto);
+    padding: 8px 12px; border-radius: 999px; font: inherit; font-size: .95rem; cursor: pointer;
+    max-width: 100%;
+  }
   .chip:focus-visible, .segmentado button:focus-visible, a:focus-visible { outline: 3px solid var(--acento); outline-offset: 2px; }
   .separador { width: 1px; height: 22px; background: var(--borde); margin: 0 2px; }
 
@@ -121,18 +127,19 @@
   </div>
 </header>
 
-<nav class="filtros" aria-label="Filtros">
+<nav class="filtros" aria-label="Periodo">
   <div class="contenedor" style="padding-bottom:0">
     <div class="fila">
-      <div class="segmentado" role="group" aria-label="Periodo">
-        <button type="button" data-vista="hoy" aria-pressed="false">Hoy</button>
-        <button type="button" data-vista="semana" aria-pressed="false">Esta semana</button>
-        <button type="button" data-vista="todos" aria-pressed="true">Todos</button>
-      </div>
-      <button type="button" class="chip gratis" id="btnGratis" aria-pressed="false">Solo gratis</button>
-      <button type="button" class="chip" id="btnPasados" aria-pressed="false">Ver días anteriores</button>
+      <label class="etiqueta" for="selectorPeriodo">Ver:</label>
+      <select id="selectorPeriodo" class="selector" aria-label="Periodo">
+        <option value="hoy" selected>Hoy</option>
+        <option value="semana">Esta semana</option>
+        <option value="proxima">Próxima semana</option>
+        <option value="noviembre">Noviembre</option>
+        <option value="diciembre">Diciembre</option>
+        <option value="enero">Enero</option>
+      </select>
     </div>
-    <div class="fila" id="categorias" role="group" aria-label="Categorías"></div>
   </div>
 </nav>
 
@@ -159,7 +166,31 @@
     { id: 'otro', nombre: 'Otros' }
   ];
 
-  var estado = { vista: 'todos', gratis: false, categoria: 'todas', pasados: false };
+  var estado = { periodo: 'hoy' };   // vista inicial al entrar: Hoy
+  // Periodos del selector. Los meses son los que tienen eventos publicados:
+  // noviembre y diciembre de 2026, enero de 2027.
+  function periodoRango(periodo, hoy) {
+    var ini, fin;
+    if (periodo === 'hoy') { ini = hoy; fin = hoy; }
+    else if (periodo === 'semana') { ini = lunesDe(hoy); fin = sumarDias(ini, 6); }
+    else if (periodo === 'proxima') { ini = sumarDias(lunesDe(hoy), 7); fin = sumarDias(ini, 6); }
+    else if (periodo === 'noviembre') { ini = '2026-11-01'; fin = '2026-11-30'; }
+    else if (periodo === 'diciembre') { ini = '2026-12-01'; fin = '2026-12-31'; }
+    else if (periodo === 'enero') { ini = '2027-01-01'; fin = '2027-01-31'; }
+    else { ini = hoy; fin = hoy; }
+    if (fin < hoy) return null;               // periodo ya pasado
+    if (ini < hoy) ini = hoy;                  // no mostrar días pasados
+    return { ini: ini, fin: fin };
+  }
+  function tituloPeriodo(periodo, r) {
+    if (!r) return 'Sin eventos publicados';
+    if (periodo === 'hoy') return 'Hoy, ' + nombreDia(r.ini);
+    if (periodo === 'semana' || periodo === 'proxima') return 'Semana ' + rango(r.ini, r.fin, true);
+    if (periodo === 'noviembre') return 'Noviembre de 2026';
+    if (periodo === 'diciembre') return 'Diciembre de 2026';
+    if (periodo === 'enero') return 'Enero de 2027';
+    return 'Semana ' + rango(r.ini, r.fin, true);
+  }
   var ultimoTexto = null;
   var datos = null;
 
@@ -262,16 +293,6 @@
   }
 
   // ---------- render ----------
-  function semanaPublicada(eventos, hoy) {
-    if (!eventos.length) return null;
-    var ref = null;
-    for (var i = 0; i < eventos.length; i++) { if (finDe(eventos[i]) >= hoy) { ref = eventos[i].fecha; break; } }
-    if (!ref) ref = eventos[eventos.length - 1].fecha;
-    if (ref < hoy) ref = hoy;
-    var ini = lunesDe(ref);
-    return { ini: ini, fin: sumarDias(ini, 6) };
-  }
-
   function tarjeta(ev, enCurso) {
     var horaTxt = ev.hora ? (ev.hora_fin ? ev.hora + ' – ' + ev.hora_fin : ev.hora) : 'Horario por confirmar';
     var etiquetas = el('div', { clase: 'etiquetas' });
@@ -306,31 +327,24 @@
     if (!datos) return;
     var hoy = hoyISO();
     var eventos = datos.eventos;
-    var semana = semanaPublicada(eventos, hoy);
+    var r = periodoRango(estado.periodo, hoy);
 
-    document.getElementById('semana').textContent = semana
-      ? 'Semana ' + rango(semana.ini, semana.fin, true)
-      : 'Sin eventos publicados';
+    document.getElementById('semana').textContent = tituloPeriodo(estado.periodo, r);
     var act = document.getElementById('actualizado');
     var f = datos.actualizado ? new Date(datos.actualizado) : null;
     act.textContent = f && !isNaN(f) ? 'Actualizado: ' + f.toLocaleString('es-MX', { day: 'numeric', month: 'long', year: 'numeric', hour: '2-digit', minute: '2-digit' }) : '';
 
-    var filtrosExtra = estado.gratis || estado.categoria !== 'todas';
-    var pasa = function (ev) {
-      if (estado.gratis && !ev.gratis) return false;
-      if (estado.categoria !== 'todas' && ev.categoria !== estado.categoria) return false;
-      return true;
-    };
-
-    // Agrupar por día. Eventos de varios días ya iniciados y aún vigentes se muestran en "hoy" si se ocultan días pasados.
+    // Agrupar por día. Un evento de varios días que ya empezó y sigue vigente
+    // se muestra en el primer día visible del periodo, marcado "En curso".
     var porDia = {};
     var agregar = function (dia, ev, enCurso) { (porDia[dia] = porDia[dia] || []).push({ ev: ev, enCurso: enCurso }); };
-    eventos.forEach(function (ev) {
-      if (!pasa(ev)) return;
-      var ocultarPasado = !estado.pasados || estado.vista === 'hoy';
-      if (ev.fecha < hoy && finDe(ev) >= hoy && ocultarPasado) agregar(hoy, ev, true);
-      else agregar(ev.fecha, ev, false);
-    });
+    if (r) {
+      eventos.forEach(function (ev) {
+        if (finDe(ev) < r.ini || ev.fecha > r.fin) return; // fuera del periodo
+        var dia = ev.fecha < r.ini ? r.ini : ev.fecha;
+        agregar(dia, ev, ev.fecha < r.ini);
+      });
+    }
     Object.keys(porDia).forEach(function (d) {
       porDia[d].sort(function (a, b) {
         var x = a.ev, y = b.ev;
@@ -339,24 +353,9 @@
       });
     });
 
-    // Días a mostrar
+    // Días a mostrar: todos los del periodo seleccionado.
     var dias = [];
-    if (estado.vista === 'hoy') {
-      dias = [hoy];
-    } else {
-      var ini, fin;
-      if (estado.vista === 'semana' && semana) { ini = semana.ini; fin = semana.fin; }
-      else if (eventos.length) {
-        ini = eventos[0].fecha; fin = eventos[0].fecha;
-        eventos.forEach(function (ev) { if (ev.fecha < ini) ini = ev.fecha; if (ev.fecha > fin) fin = ev.fecha; });
-        if (porDia[hoy] && hoy > fin) fin = hoy;
-        if (porDia[hoy] && hoy < ini) ini = hoy;
-      }
-      if (ini) {
-        if (!estado.pasados && ini < hoy) ini = hoy;
-        for (var d = ini, n = 0; d <= fin && n < 400; d = sumarDias(d, 1), n++) dias.push(d);
-      }
-    }
+    if (r) for (var d = r.ini, n = 0; d <= r.fin && n < 400; d = sumarDias(d, 1), n++) dias.push(d);
 
     var cont = document.getElementById('agenda');
     cont.textContent = '';
@@ -364,56 +363,27 @@
     dias.forEach(function (dia) {
       var lista = porDia[dia] || [];
       total += lista.length;
-      if (!lista.length && (filtrosExtra && estado.vista !== 'hoy')) return; // con filtros, ocultar días vacíos
       var h2 = el('h2', null, nombreDia(dia));
       if (dia === hoy) h2.appendChild(el('span', { clase: 'hoy', texto: 'Hoy' }));
       if (lista.length) h2.appendChild(el('span', { clase: 'cuenta', texto: lista.length === 1 ? '1 evento' : lista.length + ' eventos' }));
-      var sec = el('section', { clase: 'dia' + (dia < hoy ? ' pasado' : ''), 'aria-label': nombreDia(dia) }, h2);
+      var sec = el('section', { clase: 'dia', 'aria-label': nombreDia(dia) }, h2);
       if (lista.length) lista.forEach(function (x) { sec.appendChild(tarjeta(x.ev, x.enCurso)); });
       else sec.appendChild(el('p', { clase: 'vacio', texto: dia === hoy ? 'Hoy no hay eventos publicados.' : 'Sin eventos publicados para este día.' }));
       cont.appendChild(sec);
     });
 
-    if (!total && !(estado.vista === 'hoy' && !filtrosExtra)) {
-      var msg = filtrosExtra ? 'No hay eventos que coincidan con los filtros seleccionados.' :
-        (dias.length ? 'No hay eventos publicados en este periodo.' : 'No hay eventos próximos publicados. Activa “Ver días anteriores” para ver los pasados.');
-      var vacio = el('div', { clase: 'vacio', style: 'margin-top:18px' }, msg + ' ');
-      if (filtrosExtra) {
-        var b = el('button', { type: 'button', clase: 'boton-texto', texto: 'Quitar filtros' });
-        b.addEventListener('click', function () { estado.gratis = false; estado.categoria = 'todas'; actualizarControles(); render(); });
-        vacio.appendChild(b);
-      }
+    if (!total) {
+      var vacio = el('div', { clase: 'vacio', style: 'margin-top:18px', texto: 'No hay eventos publicados en este periodo.' });
       cont.insertBefore(vacio, cont.firstChild);
     }
   }
 
   // ---------- controles ----------
-  function actualizarControles() {
-    document.querySelectorAll('[data-vista]').forEach(function (b) { b.setAttribute('aria-pressed', String(b.dataset.vista === estado.vista)); });
-    document.getElementById('btnGratis').setAttribute('aria-pressed', String(estado.gratis));
-    var bp = document.getElementById('btnPasados');
-    bp.setAttribute('aria-pressed', String(estado.pasados));
-    bp.textContent = estado.pasados ? 'Ocultar días anteriores' : 'Ver días anteriores';
-    document.querySelectorAll('[data-cat]').forEach(function (b) { b.setAttribute('aria-pressed', String(b.dataset.cat === estado.categoria)); });
-  }
-
-  var cats = document.getElementById('categorias');
-  CATEGORIAS.forEach(function (c) {
-    var b = el('button', { type: 'button', clase: 'chip', 'data-cat': c.id, 'aria-pressed': 'false', texto: c.nombre });
-    cats.appendChild(b);
-  });
-  document.addEventListener('click', function (e) {
-    var t = e.target.closest('button');
-    if (!t) return;
-    if (t.dataset.vista) estado.vista = t.dataset.vista;
-    else if (t.dataset.cat) estado.categoria = t.dataset.cat;
-    else if (t.id === 'btnGratis') estado.gratis = !estado.gratis;
-    else if (t.id === 'btnPasados') estado.pasados = !estado.pasados;
-    else return;
-    actualizarControles();
+  // Un solo selector de periodo; "Hoy" es la vista inicial al entrar.
+  document.getElementById('selectorPeriodo').addEventListener('change', function (e) {
+    estado.periodo = e.target.value;
     render();
   });
-  actualizarControles();
 
   cargar();
   setInterval(cargar, INTERVALO_MS);
