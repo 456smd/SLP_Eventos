@@ -374,12 +374,12 @@
     dias.forEach(function (dia) {
       var lista = porDia[dia] || [];
       total += lista.length;
+      if (!lista.length) return; // los días sin eventos no se muestran
       var h2 = el('h2', null, nombreDia(dia));
       if (dia === hoy) h2.appendChild(el('span', { clase: 'hoy', texto: 'Hoy' }));
       if (lista.length) h2.appendChild(el('span', { clase: 'cuenta', texto: lista.length === 1 ? '1 evento' : lista.length + ' eventos' }));
       var sec = el('section', { clase: 'dia', 'aria-label': nombreDia(dia) }, h2);
-      if (lista.length) lista.forEach(function (x) { sec.appendChild(tarjeta(x.ev, x.enCurso)); });
-      else sec.appendChild(el('p', { clase: 'vacio', texto: dia === hoy ? 'Hoy no hay eventos publicados.' : 'Sin eventos publicados para este día.' }));
+      lista.forEach(function (x) { sec.appendChild(tarjeta(x.ev, x.enCurso)); });
       cont.appendChild(sec);
     });
 
