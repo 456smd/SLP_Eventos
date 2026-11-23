@@ -132,6 +132,7 @@
     <div class="fila">
       <label class="etiqueta" for="selectorPeriodo">Ver:</label>
       <select id="selectorPeriodo" class="selector" aria-label="Periodo">
+        <option value="pasada">Semana pasada</option>
         <option value="hoy" selected>Hoy</option>
         <option value="semana">Esta semana</option>
         <option value="proxima">Próxima semana</option>
@@ -181,6 +182,9 @@
     else if (periodo === 'enero') { ini = '2027-01-01'; fin = '2027-01-31'; }
     else if (periodo === 'febrero') { ini = '2027-02-01'; fin = '2027-02-28'; }
     else if (periodo === 'marzo') { ini = '2027-03-01'; fin = '2027-03-31'; }
+    // Semana pasada: solo los 7 días anteriores. Lo que terminó hace más de
+    // una semana ya no aparece en ninguna vista.
+    else if (periodo === 'pasada') { return { ini: sumarDias(hoy, -7), fin: sumarDias(hoy, -1) }; }
     else { ini = hoy; fin = hoy; }
     if (fin < hoy) return null;               // periodo ya pasado
     if (ini < hoy) ini = hoy;                  // no mostrar días pasados
@@ -188,6 +192,7 @@
   }
   function tituloPeriodo(periodo, r) {
     if (!r) return 'Sin eventos publicados';
+    if (periodo === 'pasada') return 'Semana pasada · ' + rango(r.ini, r.fin, true);
     if (periodo === 'hoy') return 'Hoy, ' + nombreDia(r.ini);
     if (periodo === 'semana' || periodo === 'proxima') return 'Semana ' + rango(r.ini, r.fin, true);
     if (periodo === 'noviembre') return 'Noviembre de 2026';
@@ -348,7 +353,7 @@
       eventos.forEach(function (ev) {
         if (finDe(ev) < r.ini || ev.fecha > r.fin) return; // fuera del periodo
         var dia = ev.fecha < r.ini ? r.ini : ev.fecha;
-        agregar(dia, ev, ev.fecha < r.ini);
+        agregar(dia, ev, ev.fecha < r.ini && finDe(ev) >= hoy);
       });
     }
     Object.keys(porDia).forEach(function (d) {
