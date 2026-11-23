@@ -135,7 +135,6 @@
         <option value="pasada">Semana pasada</option>
         <option value="hoy" selected>Hoy</option>
         <option value="semana">Esta semana</option>
-        <option value="proxima">Próxima semana</option>
         <option value="noviembre">Noviembre</option>
         <option value="diciembre">Diciembre</option>
         <option value="enero">Enero</option>
@@ -176,7 +175,6 @@
     var ini, fin;
     if (periodo === 'hoy') { ini = hoy; fin = hoy; }
     else if (periodo === 'semana') { ini = lunesDe(hoy); fin = sumarDias(ini, 6); }
-    else if (periodo === 'proxima') { ini = sumarDias(lunesDe(hoy), 7); fin = sumarDias(ini, 6); }
     else if (periodo === 'noviembre') { ini = '2026-11-01'; fin = '2026-11-30'; }
     else if (periodo === 'diciembre') { ini = '2026-12-01'; fin = '2026-12-31'; }
     else if (periodo === 'enero') { ini = '2027-01-01'; fin = '2027-01-31'; }
@@ -194,7 +192,7 @@
     if (!r) return 'Sin eventos publicados';
     if (periodo === 'pasada') return 'Semana pasada · ' + rango(r.ini, r.fin, true);
     if (periodo === 'hoy') return 'Hoy, ' + nombreDia(r.ini);
-    if (periodo === 'semana' || periodo === 'proxima') return 'Semana ' + rango(r.ini, r.fin, true);
+    if (periodo === 'semana') return 'Semana ' + rango(r.ini, r.fin, true);
     if (periodo === 'noviembre') return 'Noviembre de 2026';
     if (periodo === 'diciembre') return 'Diciembre de 2026';
     if (periodo === 'enero') return 'Enero de 2027';
