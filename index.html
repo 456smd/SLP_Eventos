@@ -138,6 +138,8 @@
         <option value="noviembre">Noviembre</option>
         <option value="diciembre">Diciembre</option>
         <option value="enero">Enero</option>
+        <option value="febrero">Febrero</option>
+        <option value="marzo">Marzo</option>
       </select>
     </div>
   </div>
@@ -168,7 +170,7 @@
 
   var estado = { periodo: 'hoy' };   // vista inicial al entrar: Hoy
   // Periodos del selector. Los meses son los que tienen eventos publicados:
-  // noviembre y diciembre de 2026, enero de 2027.
+  // noviembre y diciembre de 2026, enero, febrero y marzo de 2027.
   function periodoRango(periodo, hoy) {
     var ini, fin;
     if (periodo === 'hoy') { ini = hoy; fin = hoy; }
@@ -177,6 +179,8 @@
     else if (periodo === 'noviembre') { ini = '2026-11-01'; fin = '2026-11-30'; }
     else if (periodo === 'diciembre') { ini = '2026-12-01'; fin = '2026-12-31'; }
     else if (periodo === 'enero') { ini = '2027-01-01'; fin = '2027-01-31'; }
+    else if (periodo === 'febrero') { ini = '2027-02-01'; fin = '2027-02-28'; }
+    else if (periodo === 'marzo') { ini = '2027-03-01'; fin = '2027-03-31'; }
     else { ini = hoy; fin = hoy; }
     if (fin < hoy) return null;               // periodo ya pasado
     if (ini < hoy) ini = hoy;                  // no mostrar días pasados
@@ -189,6 +193,8 @@
     if (periodo === 'noviembre') return 'Noviembre de 2026';
     if (periodo === 'diciembre') return 'Diciembre de 2026';
     if (periodo === 'enero') return 'Enero de 2027';
+    if (periodo === 'febrero') return 'Febrero de 2027';
+    if (periodo === 'marzo') return 'Marzo de 2027';
     return 'Semana ' + rango(r.ini, r.fin, true);
   }
   var ultimoTexto = null;
