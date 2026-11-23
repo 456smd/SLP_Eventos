@@ -1,5 +1,5 @@
 {
-  "actualizado": "2026-11-23T00:13:30-06:00",
+  "actualizado": "2026-11-23T07:18:13-06:00",
   "ciudad": "San Luis Potosí",
   "eventos": [
     {
@@ -117,6 +117,48 @@
     {
       "categoria": "otro",
       "fecha": "2026-11-27",
+      "fecha_fin": "2027-01-29",
+      "gratis": false,
+      "hora": "10:00",
+      "hora_fin": null,
+      "id": "2026-11-27-altares-exposicion-de-jaime-galan",
+      "lugar": "Museo Leonora Carrington (CEART)",
+      "nota_horario": "del 27 nov al 29 ene, 10:00–19:00; miércoles entrada gratuita",
+      "precio": "$80 (miércoles entrada gratuita)",
+      "titulo": "ALTARES — exposición de Jaime Galán",
+      "url": "https://cultura.slp.gob.mx/eventos/2026/11/18/altares/"
+    },
+    {
+      "categoria": "otro",
+      "fecha": "2026-11-27",
+      "fecha_fin": "2027-01-29",
+      "gratis": false,
+      "hora": "10:00",
+      "hora_fin": null,
+      "id": "2026-11-27-crea-ando-exposicion",
+      "lugar": "Museo Leonora Carrington (CEART)",
+      "nota_horario": "del 27 nov al 29 ene, 10:00–19:00; miércoles entrada gratuita",
+      "precio": "$80 (miércoles entrada gratuita)",
+      "titulo": "CREA ANDO — exposición",
+      "url": "https://cultura.slp.gob.mx/eventos/2026/11/17/crea-ando/"
+    },
+    {
+      "categoria": "otro",
+      "fecha": "2026-11-27",
+      "fecha_fin": "2027-01-31",
+      "gratis": false,
+      "hora": "10:00",
+      "hora_fin": null,
+      "id": "2026-11-27-daisies-emilies-and-lilies-exposicion-de-azucena-german",
+      "lugar": "Centro de las Artes de San Luis Potosí (CEART)",
+      "nota_horario": "del 27 nov al 31 ene, 10:00–19:00; miércoles entrada gratuita",
+      "precio": "$80 (miércoles entrada gratuita)",
+      "titulo": "DAISIES, EMILIES AND LILIES — exposición de Azucena Germán",
+      "url": "https://cultura.slp.gob.mx/eventos/2026/11/18/daisies-emilies-and-lilies/"
+    },
+    {
+      "categoria": "otro",
+      "fecha": "2026-11-27",
       "fecha_fin": null,
       "gratis": true,
       "hora": "14:00",
@@ -217,6 +259,20 @@
       "fecha": "2026-11-28",
       "fecha_fin": null,
       "gratis": false,
+      "hora": "19:00",
+      "hora_fin": null,
+      "id": "2026-11-28-monte-carlo-fantasma-tour",
+      "lugar": "Bunker 57",
+      "nota_horario": "19:00",
+      "precio": "sin precio publicado",
+      "titulo": "Monte Carlo — Fantasma Tour",
+      "url": "https://www.bandsintown.com/es/c/san-luis-potosi-mexico/this-month/genre/all-genres?recommended_artists_filter=All+Artists"
+    },
+    {
+      "categoria": "música",
+      "fecha": "2026-11-28",
+      "fecha_fin": null,
+      "gratis": false,
       "hora": "19:30",
       "hora_fin": null,
       "id": "2026-11-28-la-rondalla-concierto-de-despedida-a-lo-grande",
@@ -241,6 +297,20 @@
       "url": "https://cultura.slp.gob.mx/eventos/2026/9/22/concierto-homenaje-soda-stereo/"
     },
     {
+      "categoria": "teatro",
+      "fecha": "2026-11-28",
+      "fecha_fin": null,
+      "gratis": false,
+      "hora": "20:00",
+      "hora_fin": null,
+      "id": "2026-11-28-la-posadera-compania-una",
+      "lugar": "Museo del Ferrocarril Jesús García Corona",
+      "nota_horario": "20:00",
+      "precio": "$120",
+      "titulo": "La Posadera — Compañía UNA",
+      "url": "https://www.sanluisway.com/es/events/all"
+    },
+    {
       "categoria": "música",
       "fecha": "2026-11-28",
       "fecha_fin": null,
@@ -253,6 +323,20 @@
       "precio": "sin precio publicado",
       "titulo": "Edición Especial en el Palenque de la FENAPO",
       "url": "https://www.sanluisway.com/es/events/music"
+    },
+    {
+      "categoria": "otro",
+      "fecha": "2026-11-28",
+      "fecha_fin": "2026-12-09",
+      "gratis": false,
+      "hora": null,
+      "hora_fin": null,
+      "id": "2026-11-28-resultados-academicos-de-la-escuela-de-iniciacion-artistica-del-ceart",
+      "lugar": "Centro de las Artes de San Luis Potosí (CEART)",
+      "nota_horario": "del 28 nov al 9 dic; exposición MEMORIA RAM desde el 3 dic; muestra de danza 9 dic, $80",
+      "precio": "Entrada libre (muestra de danza del 9 dic: $80)",
+      "titulo": "Resultados académicos de la Escuela de Iniciación Artística del CEART",
+      "url": "https://opslp.mx/la-eiaa-del-ceart-san-luis-presentara-los-resultados-academicos-del-semestre-agosto-diciembre-2026/"
     },
     {
       "categoria": "bazar",
@@ -309,6 +393,20 @@
       "precio": "sin precio publicado",
       "titulo": "Pimpinela — “Leyendas” Tour",
       "url": "https://www.sanluisway.com/es/events/music"
+    },
+    {
+      "categoria": "otro",
+      "fecha": "2026-12-01",
+      "fecha_fin": "2026-12-31",
+      "gratis": false,
+      "hora": "10:00",
+      "hora_fin": null,
+      "id": "2026-12-01-belenes-del-mundo-exposicion",
+      "lugar": "Museo Nacional de la Máscara",
+      "nota_horario": "del 1 al 31 dic, 10:00",
+      "precio": "sin precio publicado",
+      "titulo": "BELENES DEL MUNDO — exposición",
+      "url": "https://cultura.slp.gob.mx/eventos/2026/11/18/belenes-del-mundo/"
     },
     {
       "categoria": "otro",
@@ -561,6 +659,20 @@
       "precio": "Entrada libre",
       "titulo": "Mi Market San Luis",
       "url": "https://fenapo.slp.gob.mx/eventos/2026/11/17/mi-market-san-luis-vive-la-magia-de-la-navidad/"
+    },
+    {
+      "categoria": "música",
+      "fecha": "2026-12-13",
+      "fecha_fin": null,
+      "gratis": false,
+      "hora": "20:00",
+      "hora_fin": null,
+      "id": "2026-12-13-creedence-clearwater-revival-tributo",
+      "lugar": "Cineteca Alameda",
+      "nota_horario": "20:00",
+      "precio": "Desde $250",
+      "titulo": "Creedence Clearwater Revival — tributo",
+      "url": "https://boletohub.com/explorar"
     },
     {
       "categoria": "otro",
