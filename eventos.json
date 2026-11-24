@@ -1,6 +1,6 @@
 {
   "ciudad": "San Luis Potosí",
-  "actualizado": "2026-11-24T07:20:00-06:00",
+  "actualizado": "2026-11-24T15:17:20-06:00",
   "eventos": [
     {
       "categoria": "festival",
@@ -281,20 +281,6 @@
       "gratis": false,
       "categoria": "música",
       "url": "https://www.bandsintown.com/es/c/san-luis-potosi-mexico/this-month/genre/all-genres?recommended_artists_filter=All+Artists"
-    },
-    {
-      "id": "2026-11-27-cfa",
-      "fecha": "2026-11-27",
-      "fecha_fin": null,
-      "hora": "20:30",
-      "hora_fin": null,
-      "nota_horario": "20:30",
-      "titulo": "CFA",
-      "lugar": "Multiforo Sonica",
-      "precio": "sin precio publicado",
-      "gratis": false,
-      "categoria": "música",
-      "url": "https://www.bandsintown.com/es/c/san-luis-potosi-mexico"
     },
     {
       "categoria": "música",
