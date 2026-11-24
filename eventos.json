@@ -1,7 +1,21 @@
 {
-  "actualizado": "2026-11-23T07:18:13-06:00",
   "ciudad": "San Luis Potosí",
+  "actualizado": "2026-11-24T07:20:00-06:00",
   "eventos": [
+    {
+      "categoria": "festival",
+      "fecha": "2026-11-23",
+      "fecha_fin": "2026-11-29",
+      "gratis": true,
+      "hora": null,
+      "hora_fin": null,
+      "id": "2026-11-23-festival-kuitolil-2026",
+      "lugar": "Museo Universitario (MUNI) y Centro Cultural Universitario Bicentenario",
+      "nota_horario": "del 23 al 29 nov, sin hora publicada; Tardeada de Museo sáb 28, 16:00–19:00",
+      "precio": "Gratis",
+      "titulo": "Festival Kuitólil 2026",
+      "url": "https://www.alcantarilla.com.mx/post/festival-kuitólil-acerca-el-teatro-la-música-y-las-artes-a-las-infancias-en-slp"
+    },
     {
       "categoria": "festival",
       "fecha": "2026-11-23",
@@ -29,20 +43,6 @@
       "precio": "$875",
       "titulo": "El Cascanueces — World Ballet Tour",
       "url": "https://www.rallytakesthetrain.com/christmas-events/navidad-con-ninos-san-luis-potosi"
-    },
-    {
-      "categoria": "festival",
-      "fecha": "2026-11-23",
-      "fecha_fin": "2026-11-29",
-      "gratis": true,
-      "hora": null,
-      "hora_fin": null,
-      "id": "2026-11-23-festival-kuitolil-2026",
-      "lugar": "Museo Universitario (MUNI) y Centro Cultural Universitario Bicentenario",
-      "nota_horario": "del 23 al 29 nov, sin hora publicada; Tardeada de Museo sáb 28, 16:00–19:00",
-      "precio": "Gratis",
-      "titulo": "Festival Kuitólil 2026",
-      "url": "https://www.alcantarilla.com.mx/post/festival-kuitólil-acerca-el-teatro-la-música-y-las-artes-a-las-infancias-en-slp"
     },
     {
       "categoria": "otro",
@@ -73,6 +73,34 @@
       "url": "https://planoinformativo.com/1182605/busco-al-hombre-de-mi-vida-marido-ya-tuve-llega-al-teatro-de-la-paz"
     },
     {
+      "id": "2026-11-25-recorrido-nocturno-con-linterna-museo-francisco-cossio",
+      "fecha": "2026-11-25",
+      "fecha_fin": null,
+      "hora": "20:00",
+      "hora_fin": null,
+      "nota_horario": "20:00",
+      "titulo": "Recorrido nocturno con linterna: Museo Francisco Cossío",
+      "lugar": "Museo Francisco Cossío",
+      "precio": "$100",
+      "gratis": false,
+      "categoria": "otro",
+      "url": "https://opslp.mx/invitan-a-vivir-un-recorrido-nocturno-con-linterna-en-el-cossio/"
+    },
+    {
+      "categoria": "música",
+      "fecha": "2026-11-26",
+      "fecha_fin": null,
+      "gratis": false,
+      "hora": null,
+      "hora_fin": null,
+      "id": "2026-11-26-antologia-de-ave-maria-orquesta-de-camara-de-jovenes-talentos",
+      "lugar": "Templo de San Agustín",
+      "nota_horario": "sin hora publicada",
+      "precio": "sin precio publicado",
+      "titulo": "Antología de Ave María, Orquesta de Cámara de Jóvenes Talentos",
+      "url": "https://sanluis.eluniversal.com.mx/mas-de-san-luis/un-festival-de-musica-barroca-la-experiencia-se-vivira-en-distintas-regiones-de-slp/?outputType=amp"
+    },
+    {
       "categoria": "música",
       "fecha": "2026-11-26",
       "fecha_fin": null,
@@ -85,6 +113,20 @@
       "precio": "sin precio publicado",
       "titulo": "Doyle — Mexico Tour 2026",
       "url": "https://www.bandsintown.com/es/v/10315508-bunker-57?came_from=244"
+    },
+    {
+      "id": "2026-11-26-subsuncion-de-la-modernidad-de-carlos-torres",
+      "fecha": "2026-11-26",
+      "fecha_fin": "2027-03-07",
+      "hora": "19:00",
+      "hora_fin": null,
+      "nota_horario": "del 26 nov al 7 mar 2027; inauguración jue 26, 19:00",
+      "titulo": "Subsunción de la Modernidad, de Carlos Torres",
+      "lugar": "Galería del Teatro de la Paz",
+      "precio": "sin precio publicado",
+      "gratis": false,
+      "categoria": "otro",
+      "url": "https://lapelotera.mx/2026/11/21/llega-al-teatro-de-la-paz-la-exposicion-subsuncion-de-la-modernidad-de-carlos-torres/"
     },
     {
       "categoria": "teatro",
@@ -102,16 +144,30 @@
     },
     {
       "categoria": "música",
-      "fecha": "2026-11-26",
+      "fecha": "2026-11-27",
       "fecha_fin": null,
       "gratis": false,
       "hora": null,
       "hora_fin": null,
-      "id": "2026-11-26-antologia-de-ave-maria-orquesta-de-camara-de-jovenes-talentos",
-      "lugar": "Templo de San Agustín",
+      "id": "2026-11-27-ministriles-a-la-nueva-espana-afecctus-antiquus",
+      "lugar": "Capilla de Aranzazú",
       "nota_horario": "sin hora publicada",
       "precio": "sin precio publicado",
-      "titulo": "Antología de Ave María, Orquesta de Cámara de Jóvenes Talentos",
+      "titulo": "Ministriles a la Nueva España, Afecctus Antiquus",
+      "url": "https://sanluis.eluniversal.com.mx/mas-de-san-luis/un-festival-de-musica-barroca-la-experiencia-se-vivira-en-distintas-regiones-de-slp/?outputType=amp"
+    },
+    {
+      "categoria": "música",
+      "fecha": "2026-11-27",
+      "fecha_fin": null,
+      "gratis": false,
+      "hora": null,
+      "hora_fin": null,
+      "id": "2026-11-27-tempus-cualli",
+      "lugar": "Templo de San Francisco",
+      "nota_horario": "sin hora publicada",
+      "precio": "sin precio publicado",
+      "titulo": "Tempus Cualli",
       "url": "https://sanluis.eluniversal.com.mx/mas-de-san-luis/un-festival-de-musica-barroca-la-experiencia-se-vivira-en-distintas-regiones-de-slp/?outputType=amp"
     },
     {
@@ -157,6 +213,20 @@
       "url": "https://cultura.slp.gob.mx/eventos/2026/11/18/daisies-emilies-and-lilies/"
     },
     {
+      "id": "2026-11-27-bazar-navideno-ihi",
+      "fecha": "2026-11-27",
+      "fecha_fin": "2026-11-28",
+      "hora": "11:00",
+      "hora_fin": "18:00",
+      "nota_horario": "27 y 28 nov, 11:00–18:00",
+      "titulo": "Bazar Navideño IHI",
+      "lugar": "Instituto Hispano Inglés, Benigno Arriaga 805, Col. Moderna",
+      "precio": "sin precio publicado",
+      "gratis": false,
+      "categoria": "bazar",
+      "url": "https://www.facebook.com/HispanoInglesOficialSLP/posts/pfbid0253URa8twN1b7dB4xmfQrUXiosTgZ6Ev5fQRpgw9cZTs8WGCrRehEHhWA6aT8FgNol"
+    },
+    {
       "categoria": "otro",
       "fecha": "2026-11-27",
       "fecha_fin": null,
@@ -185,6 +255,48 @@
       "url": "https://www.sanluisway.com/es/events/music"
     },
     {
+      "id": "2026-11-27-noche-letrada",
+      "fecha": "2026-11-27",
+      "fecha_fin": "2026-11-28",
+      "hora": "18:00",
+      "hora_fin": null,
+      "nota_horario": "27 y 28 nov, 18:00",
+      "titulo": "NOCHE LETRADA",
+      "lugar": "Alfredo M. Terrazas 806",
+      "precio": "sin precio publicado",
+      "gratis": false,
+      "categoria": "otro",
+      "url": "https://www.eventbrite.com/d/mexico--soledad-de-graciano-s%C3%A1nchez/eventos-san-luis-potos%C3%AD/"
+    },
+    {
+      "id": "2026-11-27-sad-saturno-bla-bla-bla-fest-2026",
+      "fecha": "2026-11-27",
+      "fecha_fin": null,
+      "hora": "19:00",
+      "hora_fin": null,
+      "nota_horario": "19:00",
+      "titulo": "Sad Saturno — Bla Bla Bla Fest 2026",
+      "lugar": "Foodys Mx",
+      "precio": "sin precio publicado",
+      "gratis": false,
+      "categoria": "música",
+      "url": "https://www.bandsintown.com/es/c/san-luis-potosi-mexico/this-month/genre/all-genres?recommended_artists_filter=All+Artists"
+    },
+    {
+      "id": "2026-11-27-cfa",
+      "fecha": "2026-11-27",
+      "fecha_fin": null,
+      "hora": "20:30",
+      "hora_fin": null,
+      "nota_horario": "20:30",
+      "titulo": "CFA",
+      "lugar": "Multiforo Sonica",
+      "precio": "sin precio publicado",
+      "gratis": false,
+      "categoria": "música",
+      "url": "https://www.bandsintown.com/es/c/san-luis-potosi-mexico"
+    },
+    {
       "categoria": "música",
       "fecha": "2026-11-27",
       "fecha_fin": null,
@@ -199,32 +311,18 @@
       "url": "https://www.sanluisway.com/es/events/music"
     },
     {
-      "categoria": "música",
-      "fecha": "2026-11-27",
-      "fecha_fin": null,
+      "categoria": "otro",
+      "fecha": "2026-11-28",
+      "fecha_fin": "2026-12-09",
       "gratis": false,
       "hora": null,
       "hora_fin": null,
-      "id": "2026-11-27-ministriles-a-la-nueva-espana-afecctus-antiquus",
-      "lugar": "Capilla de Aranzazú",
-      "nota_horario": "sin hora publicada",
-      "precio": "sin precio publicado",
-      "titulo": "Ministriles a la Nueva España, Afecctus Antiquus",
-      "url": "https://sanluis.eluniversal.com.mx/mas-de-san-luis/un-festival-de-musica-barroca-la-experiencia-se-vivira-en-distintas-regiones-de-slp/?outputType=amp"
-    },
-    {
-      "categoria": "música",
-      "fecha": "2026-11-27",
-      "fecha_fin": null,
-      "gratis": false,
-      "hora": null,
-      "hora_fin": null,
-      "id": "2026-11-27-tempus-cualli",
-      "lugar": "Templo de San Francisco",
-      "nota_horario": "sin hora publicada",
-      "precio": "sin precio publicado",
-      "titulo": "Tempus Cualli",
-      "url": "https://sanluis.eluniversal.com.mx/mas-de-san-luis/un-festival-de-musica-barroca-la-experiencia-se-vivira-en-distintas-regiones-de-slp/?outputType=amp"
+      "id": "2026-11-28-resultados-academicos-de-la-escuela-de-iniciacion-artistica-del-ceart",
+      "lugar": "Centro de las Artes de San Luis Potosí (CEART)",
+      "nota_horario": "del 28 nov al 9 dic; exposición MEMORIA RAM desde el 3 dic; muestra de danza 9 dic, $80",
+      "precio": "Entrada libre (muestra de danza del 9 dic: $80)",
+      "titulo": "Resultados académicos de la Escuela de Iniciación Artística del CEART",
+      "url": "https://opslp.mx/la-eiaa-del-ceart-san-luis-presentara-los-resultados-academicos-del-semestre-agosto-diciembre-2026/"
     },
     {
       "categoria": "bazar",
@@ -253,6 +351,20 @@
       "precio": "Gratis",
       "titulo": "Tardeada de Museo, Festival Kuitólil",
       "url": "https://www.alcantarilla.com.mx/post/festival-kuitólil-acerca-el-teatro-la-música-y-las-artes-a-las-infancias-en-slp"
+    },
+    {
+      "id": "2026-11-28-los-reyes-del-camino-y-arnulfo-jr",
+      "fecha": "2026-11-28",
+      "fecha_fin": null,
+      "hora": "18:00",
+      "hora_fin": null,
+      "nota_horario": "18:00",
+      "titulo": "Los Reyes del Camino y Arnulfo Jr.",
+      "lugar": "Teatro de la Ciudad, Parque Tangamanga I",
+      "precio": "sin precio publicado",
+      "gratis": false,
+      "categoria": "música",
+      "url": "https://cecurt.slp.gob.mx/eventos/2026/11/18/arnulfo-jr-reyes/"
     },
     {
       "categoria": "música",
@@ -308,7 +420,7 @@
       "nota_horario": "20:00",
       "precio": "$120",
       "titulo": "La Posadera — Compañía UNA",
-      "url": "https://www.sanluisway.com/es/events/all"
+      "url": "https://planoinformativo.com/1183864/museo-del-ferrocarril-presentara-la-obra-la-posadera"
     },
     {
       "categoria": "música",
@@ -325,18 +437,18 @@
       "url": "https://www.sanluisway.com/es/events/music"
     },
     {
-      "categoria": "otro",
-      "fecha": "2026-11-28",
-      "fecha_fin": "2026-12-09",
+      "categoria": "teatro",
+      "fecha": "2026-11-29",
+      "fecha_fin": null,
       "gratis": false,
       "hora": null,
       "hora_fin": null,
-      "id": "2026-11-28-resultados-academicos-de-la-escuela-de-iniciacion-artistica-del-ceart",
-      "lugar": "Centro de las Artes de San Luis Potosí (CEART)",
-      "nota_horario": "del 28 nov al 9 dic; exposición MEMORIA RAM desde el 3 dic; muestra de danza 9 dic, $80",
-      "precio": "Entrada libre (muestra de danza del 9 dic: $80)",
-      "titulo": "Resultados académicos de la Escuela de Iniciación Artística del CEART",
-      "url": "https://opslp.mx/la-eiaa-del-ceart-san-luis-presentara-los-resultados-academicos-del-semestre-agosto-diciembre-2026/"
+      "id": "2026-11-29-escena-inclusiva-jornada-dia-internacional-de-las-personas-con-discapacidad",
+      "lugar": "Teatro de la Paz (misa y caminata desde Tequis por la mañana)",
+      "nota_horario": "sin hora publicada",
+      "precio": "sin precio publicado",
+      "titulo": "Escena Inclusiva, jornada Día Internacional de las Personas con Discapacidad",
+      "url": "https://ruedadigital.com.mx/2026/11/20/anuncian-en-san-luis-potosi-jornada-de-actividades-por-el-dia-internacional-de-las-personas-con-discapacidad/"
     },
     {
       "categoria": "bazar",
@@ -350,7 +462,7 @@
       "nota_horario": "10:00–19:00",
       "precio": "Entrada libre",
       "titulo": "Bazar Navideño en Plaza Sierra Leona",
-      "url": "https://www.instagram.com/reel/DgAr7a7xsGA/"
+      "url": "https://www.instagram.com/p/Df3HH5PIgZI/"
     },
     {
       "categoria": "música",
@@ -365,20 +477,6 @@
       "precio": "sin precio publicado",
       "titulo": "Manuel Medrano — Superior Tour",
       "url": "https://mgnoticias.mx/cambia-de-fecha-y-recinto-el-concierto-de-manuel-medrano/"
-    },
-    {
-      "categoria": "teatro",
-      "fecha": "2026-11-29",
-      "fecha_fin": null,
-      "gratis": false,
-      "hora": null,
-      "hora_fin": null,
-      "id": "2026-11-29-escena-inclusiva-jornada-dia-internacional-de-las-personas-con-discapacidad",
-      "lugar": "Teatro de la Paz (misa y caminata desde Tequis por la mañana)",
-      "nota_horario": "sin hora publicada",
-      "precio": "sin precio publicado",
-      "titulo": "Escena Inclusiva, jornada Día Internacional de las Personas con Discapacidad",
-      "url": "https://ruedadigital.com.mx/2026/11/20/anuncian-en-san-luis-potosi-jornada-de-actividades-por-el-dia-internacional-de-las-personas-con-discapacidad/"
     },
     {
       "categoria": "música",
@@ -409,6 +507,34 @@
       "url": "https://cultura.slp.gob.mx/eventos/2026/11/18/belenes-del-mundo/"
     },
     {
+      "id": "2026-12-02-el-perra-madre-tour-profugas-del-dif",
+      "fecha": "2026-12-02",
+      "fecha_fin": null,
+      "hora": "20:30",
+      "hora_fin": null,
+      "nota_horario": "20:30",
+      "titulo": "El Perra Madre Tour — Prófugas del DIF",
+      "lugar": "Teatro de la Paz",
+      "precio": "Desde $400",
+      "gratis": false,
+      "categoria": "teatro",
+      "url": "https://cpanel.yqueplan.com/"
+    },
+    {
+      "categoria": "bazar",
+      "fecha": "2026-12-03",
+      "fecha_fin": "2026-12-06",
+      "gratis": false,
+      "hora": null,
+      "hora_fin": null,
+      "id": "2026-12-03-bazar-navideno",
+      "lugar": "Zenón Fernández 908",
+      "nota_horario": "del 3 al 6 dic, sin hora publicada",
+      "precio": "sin precio publicado",
+      "titulo": "Bazar Navideño",
+      "url": "https://www.facebook.com/groups/692300341125285/permalink/3003036800051616/"
+    },
+    {
       "categoria": "otro",
       "fecha": "2026-12-03",
       "fecha_fin": null,
@@ -432,23 +558,23 @@
       "id": "2026-12-03-el-cascanueces-royal-ukrainian-ballet",
       "lugar": "Teatro de la Paz",
       "nota_horario": "20:30",
-      "precio": "Con boleto (Superboletos)",
+      "precio": "$339–$1,808",
       "titulo": "El Cascanueces — Royal Ukrainian Ballet",
-      "url": "https://www.rallytakesthetrain.com/christmas-events/el-cascanueces-del-royal-ukrainian-ballet-en-el-teatro-de-la-paz-san-lui-mx"
+      "url": "https://www.santisticket.com.mx/eventos/el-cascanueces-royal-ukranian-ballet-7c359"
     },
     {
-      "categoria": "bazar",
-      "fecha": "2026-12-03",
-      "fecha_fin": "2026-12-06",
-      "gratis": false,
+      "id": "2026-12-04-rxnde-akozta-presentacion-del-album-noesis",
+      "fecha": "2026-12-04",
+      "fecha_fin": null,
       "hora": null,
       "hora_fin": null,
-      "id": "2026-12-03-bazar-navideno",
-      "lugar": "Zenón Fernández 908",
-      "nota_horario": "del 3 al 6 dic, sin hora publicada",
+      "nota_horario": "sin hora publicada",
+      "titulo": "RXNDE AKOZTA — presentación del álbum NOESIS",
+      "lugar": "Joker Cervecería",
       "precio": "sin precio publicado",
-      "titulo": "Bazar Navideño",
-      "url": "https://www.facebook.com/groups/692300341125285/permalink/3003036800051616/"
+      "gratis": false,
+      "categoria": "música",
+      "url": "https://www.instagram.com/reel/DgHD9KuO7VF/"
     },
     {
       "categoria": "teatro",
@@ -493,6 +619,48 @@
       "url": "https://www.rallytakesthetrain.com/christmas-events/el-cascanueces-del-ballet-ruso-mary-el-en-san-luis-potosi-mx"
     },
     {
+      "id": "2026-12-04-musica-para-iluminar-el-patio",
+      "fecha": "2026-12-04",
+      "fecha_fin": null,
+      "hora": "20:00",
+      "hora_fin": null,
+      "nota_horario": "20:00",
+      "titulo": "Música para Iluminar el Patio",
+      "lugar": "Patio del Edificio Central, UASLP",
+      "precio": "Entrada libre",
+      "gratis": true,
+      "categoria": "música",
+      "url": "https://www.instagram.com/p/DgGP1UVGsPy/"
+    },
+    {
+      "categoria": "otro",
+      "fecha": "2026-12-05",
+      "fecha_fin": "2026-12-06",
+      "gratis": false,
+      "hora": null,
+      "hora_fin": null,
+      "id": "2026-12-05-gran-fondo-new-york-slp-2026",
+      "lugar": "Plaza del Carmen, Centro Histórico",
+      "nota_horario": "carrera dom 6, 6:30; GFNY Kids sáb 5, 8:00",
+      "precio": "inscripción con costo, precio sin publicar",
+      "titulo": "Gran Fondo New York SLP 2026",
+      "url": "https://pulsoslp.com.mx/amp/meta/presentan-el-gran-fondo-nueva-york-slp-2026-/2109325"
+    },
+    {
+      "id": "2026-12-05-bazar-punto-medio-en-macroplaza",
+      "fecha": "2026-12-05",
+      "fecha_fin": "2026-12-06",
+      "hora": "11:00",
+      "hora_fin": "20:00",
+      "nota_horario": "5 y 6 dic, 11:00–20:00",
+      "titulo": "Bazar Punto Medio en Macroplaza",
+      "lugar": "Macroplaza San Luis",
+      "precio": "sin precio publicado",
+      "gratis": false,
+      "categoria": "bazar",
+      "url": "https://www.instagram.com/p/DgGPq8tz8-9/"
+    },
+    {
       "categoria": "música",
       "fecha": "2026-12-05",
       "fecha_fin": null,
@@ -505,6 +673,20 @@
       "precio": "sin precio publicado",
       "titulo": "Los Dandys y La Rondalla de Saltillo",
       "url": "https://sanluis.eluniversal.com.mx/mas-de-san-luis/estos-son-los-artistas-que-se-presentaran-en-san-luis-potosi-en-noviembre-y-diciembre/?outputType=amp"
+    },
+    {
+      "id": "2026-12-05-stephyloren",
+      "fecha": "2026-12-05",
+      "fecha_fin": null,
+      "hora": "19:00",
+      "hora_fin": null,
+      "nota_horario": "19:00",
+      "titulo": "stephyloren",
+      "lugar": "Hotel María Dolores",
+      "precio": "sin precio publicado",
+      "gratis": false,
+      "categoria": "música",
+      "url": "https://www.bandsintown.com/es/c/san-luis-potosi-mexico"
     },
     {
       "categoria": "música",
@@ -521,7 +703,7 @@
       "url": "https://www.instagram.com/p/Df1Ovi0oCRw/"
     },
     {
-      "categoria": "otro",
+      "categoria": "música",
       "fecha": "2026-12-05",
       "fecha_fin": null,
       "gratis": false,
@@ -550,20 +732,6 @@
     },
     {
       "categoria": "otro",
-      "fecha": "2026-12-05",
-      "fecha_fin": "2026-12-06",
-      "gratis": false,
-      "hora": null,
-      "hora_fin": null,
-      "id": "2026-12-05-gran-fondo-new-york-slp-2026",
-      "lugar": "Plaza del Carmen, Centro Histórico",
-      "nota_horario": "carrera dom 6, 6:30; GFNY Kids sáb 5, 8:00",
-      "precio": "inscripción con costo, precio sin publicar",
-      "titulo": "Gran Fondo New York SLP 2026",
-      "url": "https://pulsoslp.com.mx/amp/meta/presentan-el-gran-fondo-nueva-york-slp-2026-/2109325"
-    },
-    {
-      "categoria": "otro",
       "fecha": "2026-12-06",
       "fecha_fin": null,
       "gratis": false,
@@ -575,6 +743,34 @@
       "precio": "$100 (5K) / $200 (10K)",
       "titulo": "Carrera “Celebremos la Vida” 5K y 10K",
       "url": "https://regionvalles.com/invitan-a-potosinos-a-participar-en-la-carrera-celebremos-la-vida/"
+    },
+    {
+      "id": "2026-12-06-seminario-de-kendo-en-san-luis-potosi-con-carlos-flores",
+      "fecha": "2026-12-06",
+      "fecha_fin": null,
+      "hora": "09:00",
+      "hora_fin": null,
+      "nota_horario": "09:00",
+      "titulo": "Seminario de Kendo en San Luis Potosí con Carlos Flores",
+      "lugar": "Resistance Fitness Center",
+      "precio": "sin precio publicado",
+      "gratis": false,
+      "categoria": "otro",
+      "url": "https://www.eventbrite.com/d/mexico--soledad-de-graciano-s%C3%A1nchez/eventos-san-luis-potos%C3%AD/"
+    },
+    {
+      "id": "2026-12-06-zaira-campos-recital-de-piano-diciembre-sonoro",
+      "fecha": "2026-12-06",
+      "fecha_fin": null,
+      "hora": "16:00",
+      "hora_fin": null,
+      "nota_horario": "16:00",
+      "titulo": "Zaira Campos — Recital de piano (Diciembre Sonoro)",
+      "lugar": "Museo del Virreinato",
+      "precio": "Entrada libre",
+      "gratis": true,
+      "categoria": "música",
+      "url": "https://opslp.mx/diciembre-sonoro-ofrecera-conciertos-en-el-museo-del-virreinato/"
     },
     {
       "categoria": "música",
@@ -591,6 +787,20 @@
       "url": "https://funticket.mx/evento/arjona-slp"
     },
     {
+      "id": "2026-12-08-synthese-quartet-diciembre-sonoro",
+      "fecha": "2026-12-08",
+      "fecha_fin": null,
+      "hora": "19:30",
+      "hora_fin": null,
+      "nota_horario": "19:30",
+      "titulo": "Synthese Quartet (Diciembre Sonoro)",
+      "lugar": "El Atrio, Centro Cultural del Museo del Virreinato",
+      "precio": "Entrada libre",
+      "gratis": true,
+      "categoria": "música",
+      "url": "https://opslp.mx/diciembre-sonoro-ofrecera-conciertos-en-el-museo-del-virreinato/"
+    },
+    {
       "categoria": "música",
       "fecha": "2026-12-09",
       "fecha_fin": null,
@@ -603,6 +813,20 @@
       "precio": "Gratis",
       "titulo": "¡Vamos Pastores! — Rondalla de la UASLP",
       "url": "https://www.facebook.com/jcruz.padiernamartinez/posts/pfbid02Ho9fpvbgVkRERPmEpryrRArHZXyqzZ4BvZK9ZyERK4TFP79bKFwzBhNwhJbRsjLEl"
+    },
+    {
+      "id": "2026-12-11-emma-calo-concierto-de-ave-marias-diciembre-sonoro",
+      "fecha": "2026-12-11",
+      "fecha_fin": null,
+      "hora": "19:30",
+      "hora_fin": null,
+      "nota_horario": "19:30",
+      "titulo": "Emma Calo — Concierto de Ave Marías (Diciembre Sonoro)",
+      "lugar": "Museo del Virreinato",
+      "precio": "sin precio publicado",
+      "gratis": false,
+      "categoria": "música",
+      "url": "https://opslp.mx/diciembre-sonoro-ofrecera-conciertos-en-el-museo-del-virreinato/"
     },
     {
       "categoria": "música",
@@ -619,6 +843,48 @@
       "url": "https://boletos.weekendticket.com.mx/event/yakisimos-el-mimoso-y-el-yaki-en-san-luis-potosi-utfafl"
     },
     {
+      "categoria": "otro",
+      "fecha": "2026-12-12",
+      "fecha_fin": null,
+      "gratis": false,
+      "hora": null,
+      "hora_fin": null,
+      "id": "2026-12-12-fiestas-guadalupanas",
+      "lugar": "Santuario de Guadalupe",
+      "nota_horario": "sin hora publicada",
+      "precio": "sin precio publicado",
+      "titulo": "Fiestas Guadalupanas",
+      "url": "https://realplazasanluis.com/eventos-en-san-luis-potosi"
+    },
+    {
+      "id": "2026-12-12-ceci-torres-dj-set",
+      "fecha": "2026-12-12",
+      "fecha_fin": null,
+      "hora": null,
+      "hora_fin": null,
+      "nota_horario": "sin hora publicada",
+      "titulo": "Ceci Torres — DJ Set",
+      "lugar": "Aura, Francisco I Madero 466, Zona Centro",
+      "precio": "sin precio publicado",
+      "gratis": false,
+      "categoria": "música",
+      "url": "https://www.instagram.com/p/DgBW1A4IuCI/"
+    },
+    {
+      "id": "2026-12-12-bazar-punto-medio-en-macroplaza-2a-edicion",
+      "fecha": "2026-12-12",
+      "fecha_fin": "2026-12-24",
+      "hora": "11:00",
+      "hora_fin": "20:00",
+      "nota_horario": "segunda edición, del 12 al 24 dic, 11:00–20:00",
+      "titulo": "Bazar Punto Medio en Macroplaza (2ª edición)",
+      "lugar": "Macroplaza San Luis",
+      "precio": "sin precio publicado",
+      "gratis": false,
+      "categoria": "bazar",
+      "url": "https://www.instagram.com/p/DgGPq8tz8-9/"
+    },
+    {
       "categoria": "música",
       "fecha": "2026-12-12",
       "fecha_fin": null,
@@ -633,18 +899,32 @@
       "url": "https://sanluis.eluniversal.com.mx/mas-de-san-luis/estos-son-los-artistas-que-se-presentaran-en-san-luis-potosi-en-noviembre-y-diciembre/?outputType=amp"
     },
     {
-      "categoria": "otro",
-      "fecha": "2026-12-12",
+      "id": "2026-12-13-carrera-paso-rosa-2026",
+      "fecha": "2026-12-13",
       "fecha_fin": null,
-      "gratis": false,
-      "hora": null,
+      "hora": "08:00",
       "hora_fin": null,
-      "id": "2026-12-12-fiestas-guadalupanas",
-      "lugar": "Santuario de Guadalupe",
-      "nota_horario": "sin hora publicada",
+      "nota_horario": "08:00",
+      "titulo": "Carrera Paso Rosa 2026",
+      "lugar": "FENAPO",
       "precio": "sin precio publicado",
-      "titulo": "Fiestas Guadalupanas",
-      "url": "https://realplazasanluis.com/eventos-en-san-luis-potosi"
+      "gratis": false,
+      "categoria": "otro",
+      "url": "https://planoinformativo.com/1182853/convocan-a-carrera-atletica-para-apoyar-a-mujeres-con-cancer"
+    },
+    {
+      "id": "2026-12-13-xxvii-carrera-del-abrigo",
+      "fecha": "2026-12-13",
+      "fecha_fin": null,
+      "hora": "08:00",
+      "hora_fin": null,
+      "nota_horario": "08:00",
+      "titulo": "XXVII Carrera del Abrigo",
+      "lugar": "Av. Venustiano Carranza esq. Fray José de Arlegui",
+      "precio": "Inscripción: donativo de una prenda abrigadora",
+      "gratis": false,
+      "categoria": "otro",
+      "url": "https://potosinoticias.com/2026/11/23/carrera-del-abrigo-2026-busca-llevar-calor-a-comunidades-potosinas/"
     },
     {
       "categoria": "bazar",
