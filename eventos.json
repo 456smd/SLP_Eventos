@@ -1,6 +1,6 @@
 {
   "ciudad": "San Luis Potosí",
-  "actualizado": "2026-11-25T08:49:49-06:00",
+  "actualizado": "2026-11-25T10:10:46-06:00",
   "eventos": [
     {
       "categoria": "festival",
@@ -15,6 +15,20 @@
       "precio": "Gratis",
       "titulo": "XIX Festival Internacional Letras en San Luis",
       "url": "https://cultivarte.mx/san-luis-potosi-se-prepara-para-el-xix-festival-internacional-letras/"
+    },
+    {
+      "categoria": "festival",
+      "fecha": "2026-11-23",
+      "fecha_fin": "2026-11-28",
+      "gratis": true,
+      "hora": "19:30",
+      "hora_fin": null,
+      "id": "2026-11-23-rodando-film-festival-14",
+      "lugar": "Tres sedes en la capital (Cinépolis El Dorado y Palacio Municipal)",
+      "nota_horario": "del 23 al 28 nov; inauguración lun 23, 19:30 en Cinépolis El Dorado; horarios por día en redes oficiales del festival",
+      "precio": "Gratis",
+      "titulo": "Rodando Film Festival 14",
+      "url": "https://potosinoticias.com/2026/11/23/rodando-film-festival-ofrecera-seis-dias-de-cine-mexicano-gratuito-en-slp/"
     },
     {
       "categoria": "teatro",
@@ -633,20 +647,6 @@
       "url": "https://www.instagram.com/p/DgGP1UVGsPy/"
     },
     {
-      "id": "2026-12-04-rxnde-akozta-presentacion-del-album-noesis",
-      "fecha": "2026-12-04",
-      "fecha_fin": null,
-      "hora": null,
-      "hora_fin": null,
-      "nota_horario": "sin hora publicada",
-      "titulo": "RXNDE AKOZTA — presentación del álbum NOESIS",
-      "lugar": "Joker Cervecería",
-      "precio": "sin precio publicado",
-      "gratis": false,
-      "categoria": "música",
-      "url": "https://www.instagram.com/reel/DgHD9KuO7VF/"
-    },
-    {
       "id": "2026-12-04-ricardo-o-farrill",
       "fecha": "2026-12-04",
       "fecha_fin": null,
@@ -659,6 +659,20 @@
       "gratis": false,
       "categoria": "teatro",
       "url": "https://www.ticketmania.mx/events/ricardo-o-farrill-en-slp"
+    },
+    {
+      "id": "2026-12-04-rxnde-akozta-presentacion-del-album-noesis",
+      "fecha": "2026-12-04",
+      "fecha_fin": null,
+      "hora": null,
+      "hora_fin": null,
+      "nota_horario": "sin hora publicada",
+      "titulo": "RXNDE AKOZTA — presentación del álbum NOESIS",
+      "lugar": "Joker Cervecería",
+      "precio": "sin precio publicado",
+      "gratis": false,
+      "categoria": "música",
+      "url": "https://www.instagram.com/reel/DgHD9KuO7VF/"
     },
     {
       "id": "2026-12-05-bazar-punto-medio-en-macroplaza",
