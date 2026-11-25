@@ -1,6 +1,6 @@
 {
   "ciudad": "San Luis Potosí",
-  "actualizado": "2026-11-25T07:18:39-06:00",
+  "actualizado": "2026-11-25T08:49:49-06:00",
   "eventos": [
     {
       "categoria": "festival",
@@ -112,7 +112,7 @@
       "precio": "Entrada libre",
       "gratis": true,
       "categoria": "otro",
-      "url": "https://www.alcantarilla.com.mx/blog/categories/cultura"
+      "url": "https://opslp.mx/ludico-favor-de-no-seguir-las-instrucciones-una-exposicion-con-piezas-lego-en-el-mac/"
     },
     {
       "id": "2026-11-26-subsuncion-de-la-modernidad-de-carlos-torres",
@@ -650,15 +650,15 @@
       "id": "2026-12-04-ricardo-o-farrill",
       "fecha": "2026-12-04",
       "fecha_fin": null,
-      "hora": null,
+      "hora": "21:00",
       "hora_fin": null,
-      "nota_horario": "sin hora publicada",
+      "nota_horario": "21:00",
       "titulo": "Ricardo O'Farrill",
       "lugar": "Cineteca Alameda",
-      "precio": "sin precio publicado",
+      "precio": "$714–$1,007",
       "gratis": false,
       "categoria": "teatro",
-      "url": "https://quetalvirtual.com/guia-quetal-2025.php?id=8"
+      "url": "https://www.ticketmania.mx/events/ricardo-o-farrill-en-slp"
     },
     {
       "id": "2026-12-05-bazar-punto-medio-en-macroplaza",
