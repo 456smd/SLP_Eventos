@@ -1,6 +1,6 @@
 {
   "ciudad": "San Luis Potosí",
-  "actualizado": "2026-11-26T12:28:10-06:00",
+  "actualizado": "2026-11-26T16:39:00-06:00",
   "eventos": [
     {
       "categoria": "festival",
@@ -185,6 +185,20 @@
       "url": "https://sanluis.eluniversal.com.mx/mas-de-san-luis/un-festival-de-musica-barroca-la-experiencia-se-vivira-en-distintas-regiones-de-slp/?outputType=amp"
     },
     {
+      "id": "2026-11-27-un-dia-en-el-laberinto",
+      "fecha": "2026-11-27",
+      "fecha_fin": null,
+      "hora": "08:30",
+      "hora_fin": "15:00",
+      "nota_horario": "",
+      "titulo": "Un Día en el Laberinto",
+      "lugar": "Museo Laberinto, Parque Tangamanga I",
+      "precio": "sin precio publicado",
+      "gratis": false,
+      "categoria": "otro",
+      "url": "https://www.sanluisway.com/es/events/arts-culture/un-dia-en-el-laberinto-day-program-for-kids-6-12-2567500a"
+    },
+    {
       "categoria": "otro",
       "fecha": "2026-11-27",
       "fecha_fin": "2027-01-29",
@@ -274,13 +288,13 @@
       "fecha_fin": "2026-11-28",
       "hora": "18:00",
       "hora_fin": null,
-      "nota_horario": "27 y 28 nov, 18:00",
+      "nota_horario": "27 y 28 nov, 18:00–00:00",
       "titulo": "NOCHE LETRADA",
       "lugar": "Alfredo M. Terrazas 806",
-      "precio": "sin precio publicado",
+      "precio": "$108.11",
       "gratis": false,
       "categoria": "otro",
-      "url": "https://www.eventbrite.com/d/mexico--soledad-de-graciano-s%C3%A1nchez/eventos-san-luis-potos%C3%AD/"
+      "url": "https://www.eventbrite.com/e/noche-letrada-tickets-2004463712924"
     },
     {
       "id": "2026-11-27-sad-saturno-bla-bla-bla-fest-2026",
