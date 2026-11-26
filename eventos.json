@@ -1,6 +1,6 @@
 {
   "ciudad": "San Luis Potosí",
-  "actualizado": "2026-11-25T10:10:46-06:00",
+  "actualizado": "2026-11-26T07:21:46-06:00",
   "eventos": [
     {
       "categoria": "festival",
@@ -101,18 +101,18 @@
       "url": "https://opslp.mx/invitan-a-vivir-un-recorrido-nocturno-con-linterna-en-el-cossio/"
     },
     {
-      "categoria": "música",
+      "id": "2026-11-26-venta-y-exhibicion-del-centro-cultural-municipal-la-merced",
       "fecha": "2026-11-26",
-      "fecha_fin": null,
-      "gratis": false,
-      "hora": "19:00",
-      "hora_fin": null,
-      "id": "2026-11-26-doyle-mexico-tour-2026",
-      "lugar": "Bunker 57",
-      "nota_horario": "19:00",
+      "fecha_fin": "2026-11-27",
+      "hora": "08:00",
+      "hora_fin": "15:00",
+      "nota_horario": "del 26 nov al 27 nov, 08:00–15:00",
+      "titulo": "Venta y Exhibición del Centro Cultural Municipal La Merced",
+      "lugar": "Unidad Administrativa Municipal",
       "precio": "sin precio publicado",
-      "titulo": "Doyle — Mexico Tour 2026",
-      "url": "https://www.bandsintown.com/es/v/10315508-bunker-57?came_from=244"
+      "gratis": false,
+      "categoria": "bazar",
+      "url": "https://vuelomagazine.com.mx/invita-gobierno-municipal-a-la-venta-y-exhibicion-de-trabajos-artisticos-del-centro-cultural-municipal-la-merced/"
     },
     {
       "id": "2026-11-26-ludico-favor-de-no-seguir-las-instrucciones",
@@ -141,6 +141,20 @@
       "gratis": false,
       "categoria": "otro",
       "url": "https://lapelotera.mx/2026/11/21/llega-al-teatro-de-la-paz-la-exposicion-subsuncion-de-la-modernidad-de-carlos-torres/"
+    },
+    {
+      "categoria": "música",
+      "fecha": "2026-11-26",
+      "fecha_fin": null,
+      "gratis": false,
+      "hora": "20:00",
+      "hora_fin": null,
+      "id": "2026-11-26-doyle-beyond-the-seventh-sun-tour",
+      "lugar": "Bunker 57",
+      "nota_horario": "20:00",
+      "precio": "$986",
+      "titulo": "DOYLE – Beyond the Seventh Sun Tour",
+      "url": "https://boletomovil.com/evento/doyle-san-luis-potosi-2026-11-26"
     },
     {
       "categoria": "teatro",
@@ -294,7 +308,7 @@
       "nota_horario": "21:00",
       "precio": "$595–$1,345",
       "titulo": "Jacinto — Hipersentimentalismo Tour",
-      "url": "https://www.sanluisway.com/es/events/music"
+      "url": "https://cultura.slp.gob.mx/eventos/2026/11/23/concierto-jacinto-hipersentimentalismo-tour/"
     },
     {
       "categoria": "música",
@@ -323,6 +337,34 @@
       "precio": "sin precio publicado",
       "titulo": "Tempus Cualli",
       "url": "https://sanluis.eluniversal.com.mx/mas-de-san-luis/un-festival-de-musica-barroca-la-experiencia-se-vivira-en-distintas-regiones-de-slp/?outputType=amp"
+    },
+    {
+      "categoria": "otro",
+      "fecha": "2026-11-28",
+      "fecha_fin": "2026-12-09",
+      "gratis": false,
+      "hora": "10:00",
+      "hora_fin": null,
+      "id": "2026-11-28-resultados-academicos-de-la-escuela-de-iniciacion-artistica-del-ceart",
+      "lugar": "Centro de las Artes de San Luis Potosí (CEART)",
+      "nota_horario": "del 28 nov al 9 dic, 10:00; exposición MEMORIA RAM desde el 3 dic; muestra de danza 9 dic, $80",
+      "precio": "Entrada libre (muestra de danza del 9 dic: $80)",
+      "titulo": "Resultados académicos de la Escuela de Iniciación Artística del CEART",
+      "url": "https://opslp.mx/la-eiaa-del-ceart-san-luis-presentara-los-resultados-academicos-del-semestre-agosto-diciembre-2026/"
+    },
+    {
+      "id": "2026-11-28-gran-bazar-navideno-del-colegio-sagrado-corazon",
+      "fecha": "2026-11-28",
+      "fecha_fin": null,
+      "hora": "10:30",
+      "hora_fin": "15:30",
+      "nota_horario": "10:30–15:30",
+      "titulo": "Gran Bazar Navideño del Colegio Sagrado Corazón",
+      "lugar": "Colegio Sagrado Corazón",
+      "precio": "Gratis",
+      "gratis": true,
+      "categoria": "bazar",
+      "url": "https://www.facebook.com/SagradoSanLuis/posts/pfbid02gPgFaZENtKfcrkcNfCsxwV1kNAYE7oKyxWf82ttsAt5n6FxaNRst7jrA1jRi9Ku2l"
     },
     {
       "categoria": "bazar",
@@ -359,7 +401,7 @@
       "hora": "18:00",
       "hora_fin": null,
       "nota_horario": "18:00",
-      "titulo": "Los Reyes del Camino y Arnulfo Jr.",
+      "titulo": "Los Reyes del Camino y Arnulfo Jr. – El Reencuentro",
       "lugar": "Teatro de la Ciudad, Parque Tangamanga I",
       "precio": "sin precio publicado",
       "gratis": false,
@@ -378,7 +420,7 @@
       "nota_horario": "19:00",
       "precio": "sin precio publicado",
       "titulo": "Monte Carlo — Fantasma Tour",
-      "url": "https://www.bandsintown.com/es/c/san-luis-potosi-mexico/this-month/genre/all-genres?recommended_artists_filter=All+Artists"
+      "url": "https://www.bandsintown.com/es/v/10315508-bunker-57?came_from=244"
     },
     {
       "categoria": "música",
@@ -435,20 +477,6 @@
       "precio": "sin precio publicado",
       "titulo": "Edición Especial en el Palenque de la FENAPO",
       "url": "https://www.sanluisway.com/es/events/music"
-    },
-    {
-      "categoria": "otro",
-      "fecha": "2026-11-28",
-      "fecha_fin": "2026-12-09",
-      "gratis": false,
-      "hora": null,
-      "hora_fin": null,
-      "id": "2026-11-28-resultados-academicos-de-la-escuela-de-iniciacion-artistica-del-ceart",
-      "lugar": "Centro de las Artes de San Luis Potosí (CEART)",
-      "nota_horario": "del 28 nov al 9 dic; exposición MEMORIA RAM desde el 3 dic; muestra de danza 9 dic, $80",
-      "precio": "Entrada libre (muestra de danza del 9 dic: $80)",
-      "titulo": "Resultados académicos de la Escuela de Iniciación Artística del CEART",
-      "url": "https://opslp.mx/la-eiaa-del-ceart-san-luis-presentara-los-resultados-academicos-del-semestre-agosto-diciembre-2026/"
     },
     {
       "categoria": "bazar",
@@ -521,6 +549,20 @@
       "url": "https://cultura.slp.gob.mx/eventos/2026/11/18/belenes-del-mundo/"
     },
     {
+      "id": "2026-12-01-encendido-navidad-verde",
+      "fecha": "2026-12-01",
+      "fecha_fin": null,
+      "hora": null,
+      "hora_fin": null,
+      "nota_horario": "sin hora publicada",
+      "titulo": "Encendido Navidad Verde",
+      "lugar": "Plaza de Fundadores",
+      "precio": "Gratis",
+      "gratis": true,
+      "categoria": "otro",
+      "url": "https://www.sanluisway.com/es/events/christmas-2026"
+    },
+    {
       "id": "2026-12-02-voces-y-miradas-la-resistencia-del-arte",
       "fecha": "2026-12-02",
       "fecha_fin": null,
@@ -546,7 +588,7 @@
       "precio": "Desde $400",
       "gratis": false,
       "categoria": "teatro",
-      "url": "https://cpanel.yqueplan.com/"
+      "url": "https://quetalvirtual.com/guia-quetal-2025.php?id=8"
     },
     {
       "categoria": "otro",
@@ -605,7 +647,7 @@
       "url": "https://www.facebook.com/IMSSDELEGACIONSLP/posts/pfbid0wqdn6G11jzSrSSRcmsZFe5soroVASh38PobJG4ZwGoMjSjWdBwgC1czGkxJGTY75l"
     },
     {
-      "categoria": "teatro",
+      "categoria": "otro",
       "fecha": "2026-12-04",
       "fecha_fin": null,
       "gratis": false,
@@ -614,7 +656,7 @@
       "id": "2026-12-04-navidad-con-lara-campos",
       "lugar": "Teatro de la Ciudad, Parque Tangamanga II",
       "nota_horario": "17:00",
-      "precio": "$530–$2,577",
+      "precio": "$539–$2,621",
       "titulo": "Navidad con Lara Campos",
       "url": "https://boletomovil.com/evento/lara-campos-en-slp-2026-11-20"
     },
@@ -653,7 +695,7 @@
       "hora": "21:00",
       "hora_fin": null,
       "nota_horario": "21:00",
-      "titulo": "Ricardo O'Farrill",
+      "titulo": "Ricardo O'Farrill – Palabra del Señor",
       "lugar": "Cineteca Alameda",
       "precio": "$714–$1,007",
       "gratis": false,
@@ -731,6 +773,20 @@
       "url": "https://www.instagram.com/p/Df1Ovi0oCRw/"
     },
     {
+      "id": "2026-12-05-tempus-christmas-concert",
+      "fecha": "2026-12-05",
+      "fecha_fin": null,
+      "hora": "20:30",
+      "hora_fin": null,
+      "nota_horario": "20:30",
+      "titulo": "Tempus Christmas Concert",
+      "lugar": "Centro Cultural Universitario Bicentenario",
+      "precio": "sin precio publicado",
+      "gratis": false,
+      "categoria": "música",
+      "url": "https://www.sanluisway.com/es/events/music"
+    },
+    {
       "categoria": "música",
       "fecha": "2026-12-05",
       "fecha_fin": null,
@@ -757,6 +813,20 @@
       "precio": "sin precio publicado",
       "titulo": "Daniel Boaventura, En Casa Tour II",
       "url": "https://www.showticket.com.mx/ListingPage.asp?lpid=108"
+    },
+    {
+      "id": "2026-12-05-gran-desfile-navideno",
+      "fecha": "2026-12-05",
+      "fecha_fin": null,
+      "hora": null,
+      "hora_fin": null,
+      "nota_horario": "sin hora publicada",
+      "titulo": "Gran Desfile Navideño",
+      "lugar": "Calles del Centro Histórico",
+      "precio": "Gratis",
+      "gratis": true,
+      "categoria": "otro",
+      "url": "https://www.sanluisway.com/es/events/christmas-2026"
     },
     {
       "categoria": "otro",
@@ -824,9 +894,9 @@
       "id": "2026-12-07-ricardo-arjona-lo-que-el-seco-no-dijo-tour",
       "lugar": "Arena Potosí",
       "nota_horario": "21:00",
-      "precio": "desde $684",
+      "precio": "Desde $850",
       "titulo": "Ricardo Arjona — Lo Que el Seco No Dijo Tour",
-      "url": "https://funticket.mx/evento/arjona-slp"
+      "url": "https://mgnoticias.mx/falta-poco-para-ricardo-arjona-en-san-luis-potosi/"
     },
     {
       "id": "2026-12-08-synthese-quartet-diciembre-sonoro",
@@ -854,19 +924,19 @@
       "nota_horario": "19:00",
       "precio": "Gratis",
       "titulo": "¡Vamos Pastores! — Rondalla de la UASLP",
-      "url": "https://www.facebook.com/jcruz.padiernamartinez/posts/pfbid02Ho9fpvbgVkRERPmEpryrRArHZXyqzZ4BvZK9ZyERK4TFP79bKFwzBhNwhJbRsjLEl"
+      "url": "https://www.instagram.com/p/DgGQv0wmtxD/"
     },
     {
       "categoria": "otro",
       "fecha": "2026-12-11",
       "fecha_fin": "2026-12-12",
-      "gratis": false,
+      "gratis": true,
       "hora": "18:00",
       "hora_fin": "22:00",
       "id": "2026-12-11-fiestas-guadalupanas",
       "lugar": "Santuario de Guadalupe",
       "nota_horario": "del 11 al 12 dic, 18:00–22:00",
-      "precio": "sin precio publicado",
+      "precio": "Gratis",
       "titulo": "Fiestas Guadalupanas",
       "url": "https://www.sanluisway.com/es/events/traditional/feast-of-the-virgin-of-guadalupe-2026-35713208"
     },
@@ -892,11 +962,39 @@
       "hora": "21:00",
       "hora_fin": null,
       "id": "2026-12-11-yakisimos-el-yaki-y-el-mimoso",
-      "lugar": "Parque Tangamanga I",
+      "lugar": "Teatro de la Ciudad, Parque Tangamanga I",
       "nota_horario": "21:00",
       "precio": "desde $250",
       "titulo": "Yakísimos — El Yaki y El Mimoso",
       "url": "https://www.weekendmx.com/blog/yakisimos-llega-a-san-luis-potosi-el-yaki-y-el-mimoso-preparan-una-noche-de-banda-y-sentimiento"
+    },
+    {
+      "id": "2026-12-11-forever-michael-tributo-a-michael-jackson",
+      "fecha": "2026-12-11",
+      "fecha_fin": null,
+      "hora": null,
+      "hora_fin": null,
+      "nota_horario": "sin hora publicada",
+      "titulo": "Forever Michael – Tributo a Michael Jackson",
+      "lugar": "Foro Sombra",
+      "precio": "sin precio publicado",
+      "gratis": false,
+      "categoria": "música",
+      "url": "https://www.sanluisway.com/es/events/music"
+    },
+    {
+      "id": "2026-12-12-carrera-rosa-guadalupana",
+      "fecha": "2026-12-12",
+      "fecha_fin": null,
+      "hora": "08:00",
+      "hora_fin": null,
+      "nota_horario": "08:00",
+      "titulo": "Carrera Rosa Guadalupana",
+      "lugar": "Iglesia del Saucito – Santuario de Guadalupe",
+      "precio": "$250",
+      "gratis": false,
+      "categoria": "otro",
+      "url": "https://sanluis.globalmedia.mx/articles/invitan_a_la_carrera_rosa_guadalupana_el_proximo_12_de_diciembre"
     },
     {
       "id": "2026-12-12-bazar-punto-medio-en-macroplaza-2a-edicion",
@@ -941,6 +1039,20 @@
       "url": "https://www.instagram.com/p/DgBW1A4IuCI/"
     },
     {
+      "id": "2026-12-12-ecom-expocomic-san-luis-potosi-2026",
+      "fecha": "2026-12-12",
+      "fecha_fin": "2026-12-13",
+      "hora": null,
+      "hora_fin": null,
+      "nota_horario": "del 12 dic al 13 dic, sin hora publicada",
+      "titulo": "ECOM EXPOCOMIC San Luis Potosí 2026",
+      "lugar": "Centro de Negocios Potosí",
+      "precio": "$180",
+      "gratis": false,
+      "categoria": "otro",
+      "url": "https://www.instagram.com/p/Df-drYuB9G3/"
+    },
+    {
       "id": "2026-12-13-carrera-paso-rosa-2026",
       "fecha": "2026-12-13",
       "fecha_fin": null,
@@ -979,7 +1091,7 @@
       "lugar": "Zona Velaria de la FENAPO",
       "nota_horario": "10:00–18:00",
       "precio": "Entrada libre",
-      "titulo": "Mi Market San Luis",
+      "titulo": "Mi Market San Luis: Vive la Magia de la Navidad",
       "url": "https://elheraldoslp.com.mx/new/2026/11/22/fenapo-abrira-sus-instalaciones-a-mercado-navideno-con-entrada-gratuita/"
     },
     {
@@ -993,7 +1105,7 @@
       "lugar": "Cineteca Alameda",
       "nota_horario": "20:00",
       "precio": "Desde $250",
-      "titulo": "Creedence Clearwater Revival — tributo",
+      "titulo": "Tributo a Creedence Clearwater Revival",
       "url": "https://boletohub.com/explorar"
     },
     {
@@ -1003,12 +1115,40 @@
       "gratis": false,
       "hora": "16:00",
       "hora_fin": "22:00",
-      "id": "2026-12-17-villa-navidena",
-      "lugar": "CEART",
+      "id": "2026-12-17-villa-navidena-del-ceart",
+      "lugar": "Museo Leonora Carrington, CEART San Luis",
       "nota_horario": "del 17 al 20 dic; jue-vie 16:00–22:00, sáb-dom 12:00–22:00",
-      "precio": "boletos en taquilla, precio sin publicar",
-      "titulo": "Villa Navideña",
+      "precio": "$120",
+      "titulo": "Villa Navideña del CEART",
       "url": "https://cultura.slp.gob.mx/eventos/2026/11/18/villa-navide%C3%B1a/"
+    },
+    {
+      "id": "2026-12-17-candlelight-tributo-a-queen",
+      "fecha": "2026-12-17",
+      "fecha_fin": null,
+      "hora": "19:00",
+      "hora_fin": null,
+      "nota_horario": "19:00",
+      "titulo": "Candlelight: Tributo a Queen",
+      "lugar": "La Lonja",
+      "precio": "Desde $430",
+      "gratis": false,
+      "categoria": "música",
+      "url": "https://www.tomaticket.com/es-mx/bilhete-candlelight-tributo-a-queen-san-luis-potosi"
+    },
+    {
+      "id": "2026-12-17-candlelight-clasicos-de-navidad",
+      "fecha": "2026-12-17",
+      "fecha_fin": null,
+      "hora": "21:00",
+      "hora_fin": null,
+      "nota_horario": "21:00",
+      "titulo": "Candlelight: Clásicos de Navidad",
+      "lugar": "La Lonja",
+      "precio": "Desde $420",
+      "gratis": false,
+      "categoria": "música",
+      "url": "https://www.rallytakesthetrain.com/christmas-events/candlelight-clasicos-de-navidad-san-luis-potosi-mx"
     },
     {
       "categoria": "música",
