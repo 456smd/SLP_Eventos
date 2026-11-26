@@ -1,6 +1,6 @@
 {
   "ciudad": "San Luis Potosí",
-  "actualizado": "2026-11-26T07:21:46-06:00",
+  "actualizado": "2026-11-26T12:28:10-06:00",
   "eventos": [
     {
       "categoria": "festival",
@@ -24,11 +24,11 @@
       "hora": "19:30",
       "hora_fin": null,
       "id": "2026-11-23-rodando-film-festival-14",
-      "lugar": "Tres sedes en la capital (Cinépolis El Dorado y Palacio Municipal)",
+      "lugar": "Tres sedes en la capital (Cinépolis El Dorado, Auditorio Rafael Nieto y Palacio Municipal)",
       "nota_horario": "del 23 al 28 nov; inauguración lun 23, 19:30 en Cinépolis El Dorado; horarios por día en redes oficiales del festival",
       "precio": "Gratis",
       "titulo": "Rodando Film Festival 14",
-      "url": "https://potosinoticias.com/2026/11/23/rodando-film-festival-ofrecera-seis-dias-de-cine-mexicano-gratuito-en-slp/"
+      "url": "https://www.facebook.com/RodandoFilmFestival"
     },
     {
       "categoria": "teatro",
