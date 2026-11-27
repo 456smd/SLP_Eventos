@@ -1,6 +1,6 @@
 {
   "ciudad": "San Luis Potosí",
-  "actualizado": "2026-11-27T07:20:27-06:00",
+  "actualizado": "2026-11-27T14:29:00-06:00",
   "eventos": [
     {
       "categoria": "festival",
@@ -222,7 +222,7 @@
       "id": "2026-11-27-crea-ando-exposicion",
       "lugar": "Museo Leonora Carrington (CEART)",
       "nota_horario": "del 27 nov al 29 ene, 10:00–19:00; miércoles entrada gratuita",
-      "precio": "$80 (miércoles entrada gratuita)",
+      "precio": "Incluida en la cuota de acceso al CEART",
       "titulo": "CREA ANDO — exposición",
       "url": "https://cultura.slp.gob.mx/eventos/2026/11/17/crea-ando/"
     },
@@ -474,7 +474,7 @@
       "id": "2026-11-28-concierto-tributo-a-soda-stereo-3-de-ellos",
       "lugar": "Cineteca Alameda",
       "nota_horario": "20:00",
-      "precio": "desde $220, VIP desde $660",
+      "precio": "desde $220, VIP $660, Zona Fan $770",
       "titulo": "Concierto tributo a Soda Stereo — “3 de Ellos”",
       "url": "https://cultura.slp.gob.mx/eventos/2026/9/22/concierto-homenaje-soda-stereo/"
     },
@@ -684,7 +684,7 @@
       "id": "2026-12-04-navidad-con-lara-campos",
       "lugar": "Teatro de la Ciudad, Parque Tangamanga II",
       "nota_horario": "17:00",
-      "precio": "$539–$2,621",
+      "precio": "$530–$2,577",
       "titulo": "Navidad con Lara Campos",
       "url": "https://boletomovil.com/evento/lara-campos-en-slp-2026-11-20"
     },
@@ -990,7 +990,7 @@
       "hora": "18:00",
       "hora_fin": "22:00",
       "id": "2026-12-11-fiestas-guadalupanas",
-      "lugar": "Santuario de Guadalupe",
+      "lugar": "Santuario de Guadalupe y Calzada de Guadalupe",
       "nota_horario": "del 11 al 12 dic, 18:00–22:00",
       "precio": "Gratis",
       "titulo": "Fiestas Guadalupanas",
