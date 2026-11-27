@@ -1,6 +1,6 @@
 {
   "ciudad": "San Luis Potosí",
-  "actualizado": "2026-11-26T16:39:00-06:00",
+  "actualizado": "2026-11-27T07:20:27-06:00",
   "eventos": [
     {
       "categoria": "festival",
@@ -269,20 +269,6 @@
       "url": "https://ruedadigital.com.mx/2026/11/20/anuncian-en-san-luis-potosi-jornada-de-actividades-por-el-dia-internacional-de-las-personas-con-discapacidad/"
     },
     {
-      "categoria": "música",
-      "fecha": "2026-11-27",
-      "fecha_fin": null,
-      "gratis": false,
-      "hora": "18:00",
-      "hora_fin": null,
-      "id": "2026-11-27-dos-tipos-de-cuidado-homenaje-a-jorge-negrete-y-pedro-infante",
-      "lugar": "Museo Francisco Cossío",
-      "nota_horario": "18:00",
-      "precio": "$150 preventa / $200 el día",
-      "titulo": "Dos Tipos de Cuidado — Homenaje a Jorge Negrete y Pedro Infante",
-      "url": "https://www.sanluisway.com/es/events/music"
-    },
-    {
       "id": "2026-11-27-noche-letrada",
       "fecha": "2026-11-27",
       "fecha_fin": "2026-11-28",
@@ -295,6 +281,34 @@
       "gratis": false,
       "categoria": "otro",
       "url": "https://www.eventbrite.com/e/noche-letrada-tickets-2004463712924"
+    },
+    {
+      "id": "2026-11-27-tamara-y-sonideros-en-el-barrio-de-santiago",
+      "fecha": "2026-11-27",
+      "fecha_fin": null,
+      "hora": "18:00",
+      "hora_fin": "22:00",
+      "nota_horario": "18:00–22:00",
+      "titulo": "Tamara y sonideros en el Barrio de Santiago",
+      "lugar": "Jardín del Barrio de Santiago",
+      "precio": "Gratis",
+      "gratis": true,
+      "categoria": "música",
+      "url": "https://planoinformativo.com/1183826/casa-de-cultura-del-barrio-de-tlaxcala-presenta-actividades"
+    },
+    {
+      "categoria": "música",
+      "fecha": "2026-11-27",
+      "fecha_fin": null,
+      "gratis": false,
+      "hora": "19:00",
+      "hora_fin": null,
+      "id": "2026-11-27-dos-tipos-de-cuidado-homenaje-a-jorge-negrete-y-pedro-infante",
+      "lugar": "Museo Francisco Cossío",
+      "nota_horario": "19:00",
+      "precio": "$150 preventa / $200 el día",
+      "titulo": "Dos Tipos de Cuidado — Homenaje a Jorge Negrete y Pedro Infante",
+      "url": "https://cultura.slp.gob.mx/eventos/2026/11/13/dos-tipos-de-cuidado-tributo-a-jorge-negrete-y-pedro-infante-2334/"
     },
     {
       "id": "2026-11-27-sad-saturno-bla-bla-bla-fest-2026",
@@ -609,14 +623,14 @@
       "fecha": "2026-12-03",
       "fecha_fin": null,
       "gratis": false,
-      "hora": "19:30",
+      "hora": "19:00",
       "hora_fin": null,
       "id": "2026-12-03-el-potosinazo-en-el-ring",
-      "lugar": "CEART",
-      "nota_horario": "19:30",
-      "precio": "sin precio publicado",
+      "lugar": "CEART San Luis Potosí",
+      "nota_horario": "19:00",
+      "precio": "$100–$300",
       "titulo": "El Potosinazo en el Ring",
-      "url": "https://diariopotosi.com/el-potosinazo-en-el-ring-combinara-lucha-libre-musica-y-entretenimiento-en-el-ceart/"
+      "url": "https://potosinoticias.com/2026/11/26/presentan-funcion-de-lucha-libre-potosinazo-en-el-ring/"
     },
     {
       "categoria": "teatro",
@@ -729,6 +743,20 @@
       "gratis": false,
       "categoria": "música",
       "url": "https://www.instagram.com/reel/DgHD9KuO7VF/"
+    },
+    {
+      "id": "2026-12-05-gfny-kids",
+      "fecha": "2026-12-05",
+      "fecha_fin": null,
+      "hora": "08:00",
+      "hora_fin": null,
+      "nota_horario": "08:00",
+      "titulo": "GFNY Kids",
+      "lugar": "Plaza del Carmen",
+      "precio": "sin precio publicado",
+      "gratis": false,
+      "categoria": "otro",
+      "url": "https://pulsoslp.com.mx/amp/meta/presentan-el-gran-fondo-nueva-york-slp-2026-/2109325"
     },
     {
       "id": "2026-12-05-bazar-punto-medio-en-macroplaza",
@@ -885,6 +913,20 @@
       "url": "https://www.eventbrite.com/d/mexico--soledad-de-graciano-s%C3%A1nchez/eventos-san-luis-potos%C3%AD/"
     },
     {
+      "id": "2026-12-06-orquesta-sinfonica-muvi-en-el-teatro-de-la-paz",
+      "fecha": "2026-12-06",
+      "fecha_fin": null,
+      "hora": "13:00",
+      "hora_fin": null,
+      "nota_horario": "13:00",
+      "titulo": "Orquesta Sinfónica MUVI en el Teatro de la Paz",
+      "lugar": "Teatro de la Paz",
+      "precio": "sin precio publicado",
+      "gratis": false,
+      "categoria": "música",
+      "url": "https://extraextrasanluis.com/2026/11/26/la-orquesta-sinfonica-muvi-se-presenta-en-el-emblematico-teatro-de-la-paz/"
+    },
+    {
       "id": "2026-12-06-zaira-campos-recital-de-piano-diciembre-sonoro",
       "fecha": "2026-12-06",
       "fecha_fin": null,
@@ -892,8 +934,8 @@
       "hora_fin": null,
       "nota_horario": "16:00",
       "titulo": "Zaira Campos — Recital de piano (Diciembre Sonoro)",
-      "lugar": "Museo del Virreinato",
-      "precio": "Entrada libre",
+      "lugar": "Sala De Profundis, Museo del Virreinato",
+      "precio": "Gratis",
       "gratis": true,
       "categoria": "música",
       "url": "https://opslp.mx/diciembre-sonoro-ofrecera-conciertos-en-el-museo-del-virreinato/"
@@ -1123,6 +1165,20 @@
       "url": "https://boletohub.com/explorar"
     },
     {
+      "id": "2026-12-16-villa-navidena-del-museo-francisco-cossio",
+      "fecha": "2026-12-16",
+      "fecha_fin": "2026-12-22",
+      "hora": null,
+      "hora_fin": null,
+      "nota_horario": "del 16 al 22 dic, sin hora publicada",
+      "titulo": "Villa Navideña del Museo Francisco Cossío",
+      "lugar": "Museo Francisco Cossío",
+      "precio": "sin precio publicado",
+      "gratis": false,
+      "categoria": "otro",
+      "url": "https://cultivarte.mx/la-villa-navidena-llega-al-museo-francisco-cossio/"
+    },
+    {
       "categoria": "otro",
       "fecha": "2026-12-17",
       "fecha_fin": "2026-12-20",
@@ -1163,6 +1219,20 @@
       "gratis": false,
       "categoria": "música",
       "url": "https://www.rallytakesthetrain.com/christmas-events/candlelight-clasicos-de-navidad-san-luis-potosi-mx"
+    },
+    {
+      "id": "2026-12-18-burn-in-noise-en-slp",
+      "fecha": "2026-12-18",
+      "fecha_fin": null,
+      "hora": "20:00",
+      "hora_fin": null,
+      "nota_horario": "20:00",
+      "titulo": "Burn In Noise en SLP",
+      "lugar": "Concept Club",
+      "precio": "Desde $250",
+      "gratis": false,
+      "categoria": "música",
+      "url": "https://www.eventbrite.com/d/mexico--soledad-de-graciano-s%C3%A1nchez/eventos-san-luis-potos%C3%AD/"
     },
     {
       "categoria": "música",
